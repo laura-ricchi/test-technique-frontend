@@ -5,7 +5,6 @@ import { Helmet } from "react-helmet";
 import { useHistory } from "react-router-dom";
 import "../App.css";
 import TextField from "@material-ui/core/TextField";
-import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 
 const Login = () => {
@@ -35,39 +34,40 @@ const Login = () => {
   };
 
   return (
-    <Grid>
+    <div class="container">
       <Helmet>
-        <title>Se connecter à votre compte</title>
+        <title>Bienvenue sur People Meets World</title>
       </Helmet>
-      <Grid>
-        <div class="container-picture">
+      <div className="container-login">
+        <div className="container-picture">
           <img
             alt="landscape"
-            src="https://source.unsplash.com/user/erondu/1600x900"
+            src="https://source.unsplash.com/random"
             class="picture-landscape"
           ></img>
         </div>
-        <div>
+        <div className="form">
           <Typography component="h1" variant="h5">
             Bienvenue sur notre site People Meets World !
           </Typography>
-          <Typography component="h1" variant="h5">
-            Connexion
-          </Typography>
+          <Typography component="h2">Connexion</Typography>
           <form onSubmit={handleLoginSubmit}>
-            <p>Adresse mail</p>
             <TextField
               id="input"
+              type="text"
               variant="outlined"
               margin="normal"
-              type="text"
+              label="Votre email"
+              name="email"
+              autoComplete="email"
+              autoFocus
               onChange={(event) => setEmail(event.target.value)}
             />
-            <p>Mot de passe</p>
             <TextField
               id="input"
               variant="outlined"
               type="password"
+              label="Votre mot de passe"
               onChange={(event) => setPassword(event.target.value)}
             />
             <input value="Se connecter" type="submit" />
@@ -81,8 +81,8 @@ const Login = () => {
             />
           </form>
         </div>
-      </Grid>
-    </Grid>
+      </div>
+    </div>
   );
 };
 export default Login;

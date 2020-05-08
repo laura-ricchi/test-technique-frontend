@@ -8,19 +8,27 @@ body {
 #input {
   height: 10px;
   width: 300px;
-  border-radius: 20px;
 }
 .container {
   display: flex;
-  flex-direction: row;
-  background: red;
 }
 
 /* LOGIN */
-.container-landscape {
+
+.container-login {
   display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  width: 1000px;
 }
-.landscape {
-  background-repeat: "no-repeat";
+.picture-landscape {
   background-size: "cover";
+  background-position: "center";
+  object-fit: contain;
+  width: 700px;
+  height: 500px;
+}
+.form {
+  margin-right: 20px;
 }

@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Helmet } from "react-helmet";
 import { useHistory } from "react-router-dom";
+import "../App.css";
+import TextField from "@material-ui/core/TextField";
+import Typography from "@material-ui/core/Typography";
 
 // page de création d'un nouveau compte
 
@@ -22,11 +25,14 @@ const SignUp = () => {
       if (password !== confirmPassword) {
         alert("Vos mots de passe ne sont pas identiques");
       } else {
-        const response = await axios.post("https://localhost:3001/signup", {
-          email: email,
-          username: username,
-          password: password,
-        });
+        const response = await axios.post(
+          "https://my-profile-site-by-lauraricchi.herokuapp.com/signup",
+          {
+            email: email,
+            username: username,
+            password: password,
+          }
+        );
         console.log(response.data);
       }
     } catch (error) {
@@ -39,30 +45,40 @@ const SignUp = () => {
         <title>S'inscrire</title>
       </Helmet>
       <div>
-        <p>Créer votre compte</p>
+        <Typography component="h1" variant="h5">
+          S'inscrire
+        </Typography>
         <form onSubmit={handleSignupSubmit}>
           <p>Votre nom d'utilisateur</p>
-          <input
+          <TextField
+            id="input"
+            variant="outlined"
             type="text"
             onChange={(event) => setUsername(event.target.value)}
           />
           <p>Votre email</p>
-          <input
+          <TextField
+            id="input"
+            variant="outlined"
             type="text"
             onChange={(event) => setEmail(event.target.value)}
           />
           <p>Votre mot de passe</p>
-          <input
+          <TextField
+            id="input"
+            variant="outlined"
             type="password"
             onChange={(event) => setPassword(event.target.value)}
           />
           <p>Confirmez votre mot de passe</p>
-          <input
+          <TextField
+            id="input"
+            variant="outlined"
             type="password"
             onChange={(event) => setConfirmPassword(event.target.value)}
           />
           <div>
-            <input value="Créer mon compte" type="submit" />
+            <button value="Créer mon compte" type="submit" />
           </div>
           <p>Vous avez un compte ?</p>
           <input

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Helmet } from "react-helmet";
+import "../App.css";
 
 const Home = () => {
   // création des états pour l'affichage des profils
@@ -28,23 +29,16 @@ const Home = () => {
       <Helmet>
         <title>Tous les profils</title>
       </Helmet>
+      <h1>Nos profils</h1>
+
       {isLoading ? (
         <p>Page is coming...</p>
       ) : (
         <div>
-          <h1>Nos profils</h1>
-
           {data.results.map((user, index) => {
             return (
               <div key={index}>
-                <img
-                  alt="people"
-                  src={
-                    user.picture.large.path + "." + user.picture.large.extension
-                  }
-                ></img>
-                <p>{user.gender}</p>
-                <p>{user.name.title}</p>
+                <img alt="people" src={user.picture.large.path}></img>
                 <p>{user.name.first}</p>
                 <p>{user.name.last}</p>
                 <p>{user.location.state}</p>

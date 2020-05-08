@@ -1,0 +1,26 @@
+/* Common */
+
+body {
+  background: #fafafa;
+  margin: 0 auto;
+  width: 1240px;
+}
+#input {
+  height: 10px;
+  width: 300px;
+  border-radius: 20px;
+}
+.container {
+  display: flex;
+  flex-direction: row;
+  background: red;
+}
+
+/* LOGIN */
+.container-landscape {
+  display: flex;
+}
+.landscape {
+  background-repeat: "no-repeat";
+  background-size: "cover";
+}

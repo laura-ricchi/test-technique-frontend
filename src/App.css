@@ -1,34 +1,57 @@
 /* Common */
 
 body {
-  background: #fafafa;
+  background: #ffffff;
   margin: 0 auto;
-  width: 1240px;
+  overflow-x: hidden;
 }
-#input {
+.input {
   height: 10px;
   width: 300px;
 }
-.container {
+
+/* Header */
+header {
   display: flex;
+  background: #474e5e;
+  height: 100px;
+  font-family: "Roboto", sans-serif;
+}
+.element-header {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+.name-header {
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 30px;
+}
+
+/* HOME */
+.all-cards {
+  display: flex;
+  justify-content: center;
+}
+.card {
+  background: red;
+  width: 500px;
+  margin-bottom: 20px;
+}
+.picture-user {
+  height: 180px;
+  object-fit: contain;
+}
+.name-profile {
+  font-weight: bold;
 }
 
 /* LOGIN */
 
-.container-login {
-  display: flex;
-  flex: 1;
-  align-items: center;
-  justify-content: center;
-  width: 1000px;
-}
-.picture-landscape {
-  background-size: "cover";
-  background-position: "center";
-  object-fit: contain;
-  width: 700px;
-  height: 500px;
-}
 .form {
-  margin-right: 20px;
+  flex: 1;
+  text-align: center;
+  height: 500px;
 }

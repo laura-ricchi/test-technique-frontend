@@ -4,6 +4,8 @@ import Cookies from "js-cookie";
 import { Helmet } from "react-helmet";
 import { useHistory } from "react-router-dom";
 import "../App.css";
+import Grid from "@material-ui/core/Grid";
+import Paper from "@material-ui/core/Paper";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 
@@ -34,42 +36,42 @@ const Login = () => {
   };
 
   return (
-    <div class="container">
+    <Grid className="container-login" component={Paper}>
       <Helmet>
         <title>Bienvenue sur People Meets World</title>
       </Helmet>
-      <div className="container-login">
-        <div className="container-picture">
-          <img
-            alt="landscape"
-            src="https://source.unsplash.com/random"
-            class="picture-landscape"
-          ></img>
-        </div>
-        <div className="form">
+      <Grid className="form">
+        <div className="title-login">
           <Typography component="h1" variant="h5">
             Bienvenue sur notre site People Meets World !
           </Typography>
+        </div>
+        <div className="title-connexion">
           <Typography component="h2">Connexion</Typography>
+        </div>
+        <div className="form-login">
           <form onSubmit={handleLoginSubmit}>
             <TextField
-              id="input"
+              className="input"
               type="text"
               variant="outlined"
               margin="normal"
               label="Votre email"
               name="email"
-              autoComplete="email"
               autoFocus
               onChange={(event) => setEmail(event.target.value)}
             />
             <TextField
-              id="input"
+              className="input"
               variant="outlined"
+              margin="normal"
+              name="password"
               type="password"
               label="Votre mot de passe"
+              autoFocus
               onChange={(event) => setPassword(event.target.value)}
             />
+
             <input value="Se connecter" type="submit" />
 
             <p>Vous n'avez pas de compte ?</p>
@@ -81,8 +83,8 @@ const Login = () => {
             />
           </form>
         </div>
-      </div>
-    </div>
+      </Grid>
+    </Grid>
   );
 };
 export default Login;

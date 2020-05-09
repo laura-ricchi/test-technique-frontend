@@ -2,6 +2,13 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Helmet } from "react-helmet";
 import "../App.css";
+import Button from "@material-ui/core/Button";
+import Card from "@material-ui/core/Card";
+import CardMedia from "@material-ui/core/CardMedia";
+import CardContent from "@material-ui/core/CardContent";
+import CardActions from "@material-ui/core/CardActions";
+import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
 
 const Home = () => {
   // création des états pour l'affichage des profils
@@ -29,25 +36,49 @@ const Home = () => {
       <Helmet>
         <title>Tous les profils</title>
       </Helmet>
-      <h1>Nos profils</h1>
+      <Typography variant="h2">Nos profils</Typography>
 
       {isLoading ? (
         <p>Page is coming...</p>
       ) : (
-        <div>
+        <Grid class="container-home">
           {data.results.map((user, index) => {
             return (
-              <div key={index}>
-                <img alt="people" src={user.picture.large.path}></img>
-                <p>{user.name.first}</p>
-                <p>{user.name.last}</p>
-                <p>{user.location.state}</p>
-                <p>{user.location.country}</p>
-                <p>{user.dob.age} ans</p>
-              </div>
+              <Grid class="all-cards">
+                <Card class="card" key={index}>
+                  <CardMedia
+                    component="img"
+                    alt="people"
+                    class="picture-user"
+                    src={
+                      user.picture.large.path +
+                      "." +
+                      user.picture.large.extension
+                    }
+                  />
+                  <CardContent class="card-info-user">
+                    <div>
+                      <div class="name-profile">
+                        {user.name.first} {user.name.last}
+                      </div>
+                      <div>{user.location.country}</div>
+                      <div>{user.dob.age} ans</div>
+                    </div>
+                  </CardContent>
+                  <CardActions>
+                    <Button
+                      size="small"
+                      aria-label="small outlined button"
+                      color="primary"
+                    >
+                      Voir son profil
+                    </Button>
+                  </CardActions>
+                </Card>
+              </Grid>
             );
           })}
-        </div>
+        </Grid>
       )}
     </div>
   );

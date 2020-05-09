@@ -8,18 +8,25 @@ import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import CardActions from "@material-ui/core/CardActions";
 import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
+import { styled } from "@material-ui/core/styles";
+import Loading from "../components/Loading";
 
 const Home = () => {
   // création des états pour l'affichage des profils
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState([]);
 
+  const MyButton = styled(Button)({
+    color: "#BC48D1",
+    height: 44,
+    padding: "0 30px",
+  });
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://randomuser.me/api/?results=20"
+          "https://randomuser.me/api/?results=10"
         );
         console.log(response.data);
         setData(response.data);
@@ -36,10 +43,9 @@ const Home = () => {
       <Helmet>
         <title>Tous les profils</title>
       </Helmet>
-      <Typography variant="h2">Nos profils</Typography>
 
       {isLoading ? (
-        <p>Page is coming...</p>
+        <Loading />
       ) : (
         <Grid class="container-home">
           {data.results.map((user, index) => {
@@ -48,13 +54,9 @@ const Home = () => {
                 <Card class="card" key={index}>
                   <CardMedia
                     component="img"
-                    alt="people"
+                    alt={user.name.first}
                     class="picture-user"
-                    src={
-                      user.picture.large.path +
-                      "." +
-                      user.picture.large.extension
-                    }
+                    src={user.picture.large + "." + user.picture.extension}
                   />
                   <CardContent class="card-info-user">
                     <div>
@@ -66,13 +68,8 @@ const Home = () => {
                     </div>
                   </CardContent>
                   <CardActions>
-                    <Button
-                      size="small"
-                      aria-label="small outlined button"
-                      color="primary"
-                    >
-                      Voir son profil
-                    </Button>
+                    <MyButton variant="outlined">Voir son profil</MyButton>
+                    <MyButton variant="outlined">Contacter</MyButton>
                   </CardActions>
                 </Card>
               </Grid>

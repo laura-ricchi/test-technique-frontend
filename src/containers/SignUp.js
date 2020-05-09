@@ -40,7 +40,7 @@ const SignUp = () => {
     }
   };
   return (
-    <div>
+    <div className="container-signup">
       <Helmet>
         <title>S'inscrire</title>
       </Helmet>
@@ -51,28 +51,28 @@ const SignUp = () => {
         <form onSubmit={handleSignupSubmit}>
           <p>Votre nom d'utilisateur</p>
           <TextField
-            id="input"
+            className="input"
             variant="outlined"
             type="text"
             onChange={(event) => setUsername(event.target.value)}
           />
           <p>Votre email</p>
           <TextField
-            id="input"
+            className="input"
             variant="outlined"
             type="text"
             onChange={(event) => setEmail(event.target.value)}
           />
           <p>Votre mot de passe</p>
           <TextField
-            id="input"
+            className="input"
             variant="outlined"
             type="password"
             onChange={(event) => setPassword(event.target.value)}
           />
           <p>Confirmez votre mot de passe</p>
           <TextField
-            id="input"
+            className="input"
             variant="outlined"
             type="password"
             onChange={(event) => setConfirmPassword(event.target.value)}

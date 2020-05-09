@@ -4,8 +4,8 @@ import Cookies from "js-cookie";
 import { Helmet } from "react-helmet";
 import { useHistory } from "react-router-dom";
 import "../App.css";
-import Grid from "@material-ui/core/Grid";
-import Paper from "@material-ui/core/Paper";
+import { styled } from "@material-ui/core/styles";
+import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 
@@ -15,6 +15,16 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const history = useHistory();
   const token = Cookies.get("token");
+
+  const MyButton = styled(Button)({
+    background: "linear-gradient(45deg, #4183d7 30%, #44b0ea 90%)",
+    border: 0,
+    borderRadius: 3,
+    boxShadow: "0 3px 5px 2px rgba(65, 131, 215, .3)",
+    color: "white",
+    height: 48,
+    padding: "0 30px",
+  });
 
   const handleLoginSubmit = async (event) => {
     try {
@@ -36,55 +46,48 @@ const Login = () => {
   };
 
   return (
-    <Grid className="container-login" component={Paper}>
+    <div className="container-login">
       <Helmet>
         <title>Bienvenue sur People Meets World</title>
       </Helmet>
-      <Grid className="form">
-        <div className="title-login">
-          <Typography component="h1" variant="h5">
-            Bienvenue sur notre site People Meets World !
-          </Typography>
-        </div>
-        <div className="title-connexion">
-          <Typography component="h2">Connexion</Typography>
-        </div>
+      <div className="form">
         <div className="form-login">
           <form onSubmit={handleLoginSubmit}>
+            <Typography component="h2">Connexion à votre compte</Typography>
+            <p>Votre email</p>
             <TextField
               className="input"
               type="text"
               variant="outlined"
-              margin="normal"
               label="Votre email"
-              name="email"
               autoFocus
               onChange={(event) => setEmail(event.target.value)}
             />
+            <p>Votre mot de passe</p>
             <TextField
               className="input"
               variant="outlined"
-              margin="normal"
-              name="password"
               type="password"
               label="Votre mot de passe"
               autoFocus
               onChange={(event) => setPassword(event.target.value)}
             />
+            <div className="button-login">
+              <MyButton value="Se connecter" type="submit" />
+            </div>
+            <div>
+              <span>Vous n'avez pas de compte ?</span>
+            </div>
 
-            <input value="Se connecter" type="submit" />
-
-            <p>Vous n'avez pas de compte ?</p>
-
-            <input
+            <MyButton
               onClick={() => history.push("/signup")}
               type="button"
               value="Créer un compte"
             />
           </form>
         </div>
-      </Grid>
-    </Grid>
+      </div>
+    </div>
   );
 };
 export default Login;

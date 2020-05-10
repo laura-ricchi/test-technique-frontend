@@ -47,20 +47,20 @@ const Home = () => {
       {isLoading ? (
         <Loading />
       ) : (
-        <Grid class="container-home">
+        <Grid className="container-home">
           {data.results.map((user, index) => {
             return (
-              <Grid class="all-cards">
-                <Card class="card" key={index}>
+              <Grid className="all-cards" key={index}>
+                <Card className="card">
                   <CardMedia
                     component="img"
                     alt={user.name.first}
-                    class="picture-user"
-                    src={user.picture.large + "." + user.picture.extension}
+                    className="picture-user"
+                    src={user.picture.medium}
                   />
-                  <CardContent class="card-info-user">
+                  <CardContent className="card-info-user">
                     <div>
-                      <div class="name-profile">
+                      <div className="name-profile">
                         {user.name.first} {user.name.last}
                       </div>
                       <div>{user.location.country}</div>

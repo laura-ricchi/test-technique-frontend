@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Helmet } from "react-helmet";
-import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "../App.css";
+import Button from "@material-ui/core/Button";
+import { styled } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
-import Typography from "@material-ui/core/Typography";
 
 // page de création d'un nouveau compte
 
@@ -14,15 +15,25 @@ const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const history = useHistory();
+
+  const MyButton = styled(Button)({
+    background: "linear-gradient(45deg, #4183d7 30%, #44b0ea 90%)",
+    border: 0,
+    borderRadius: 10,
+    boxShadow: "0 3px 5px 2px rgba(65, 131, 215, .3)",
+    color: "white",
+    width: 170,
+    height: 48,
+    padding: "0 30px",
+  });
 
   // création d'une fonction pour empécher le navigateur de changer de page
-
   const handleSignupSubmit = async (event) => {
     try {
       event.preventDefault();
-
-      if (password !== confirmPassword) {
+      if (!username || !email || !password || !confirmPassword) {
+        alert("Veuillez remplir tous les champs");
+      } else if (password !== confirmPassword) {
         alert("Vos mots de passe ne sont pas identiques");
       } else {
         const response = await axios.post(
@@ -40,53 +51,62 @@ const SignUp = () => {
     }
   };
   return (
-    <div className="container-signup">
+    <div className="container">
       <Helmet>
         <title>S'inscrire</title>
       </Helmet>
-      <div>
-        <Typography component="h1" variant="h5">
-          S'inscrire
-        </Typography>
-        <form onSubmit={handleSignupSubmit}>
-          <p>Votre nom d'utilisateur</p>
-          <TextField
-            className="input"
-            variant="outlined"
-            type="text"
-            onChange={(event) => setUsername(event.target.value)}
-          />
-          <p>Votre email</p>
-          <TextField
-            className="input"
-            variant="outlined"
-            type="text"
-            onChange={(event) => setEmail(event.target.value)}
-          />
-          <p>Votre mot de passe</p>
-          <TextField
-            className="input"
-            variant="outlined"
-            type="password"
-            onChange={(event) => setPassword(event.target.value)}
-          />
-          <p>Confirmez votre mot de passe</p>
-          <TextField
-            className="input"
-            variant="outlined"
-            type="password"
-            onChange={(event) => setConfirmPassword(event.target.value)}
-          />
-          <div>
-            <button value="Créer mon compte" type="submit" />
-          </div>
-          <p>Vous avez un compte ?</p>
-          <input
-            onClick={() => history.push("/login")}
-            type="button"
-            value="Se connecter"
-          />
-        </form>
+      <div className="form-signup">
+        <div className="form-to-register">
+          <h2>S'inscrire</h2>
+          <form onSubmit={handleSignupSubmit}>
+            <p>Votre nom d'utilisateur</p>
+            <TextField
+              className="input"
+              variant="outlined"
+              type="text"
+              size="small"
+              label="Nom d'utilisateur "
+              autoFocus
+              onChange={(event) => setUsername(event.target.value)}
+            />
+            <p>Votre email</p>
+            <TextField
+              className="input"
+              variant="outlined"
+              size="small"
+              type="text"
+              label="Email"
+              onChange={(event) => setEmail(event.target.value)}
+            />
+            <p>Votre mot de passe</p>
+            <TextField
+              className="input"
+              variant="outlined"
+              size="small"
+              type="password"
+              placeholder="●●●●●●●●"
+              onChange={(event) => setPassword(event.target.value)}
+            />
+
+            <p>Confirmez votre mot de passe</p>
+            <TextField
+              className="input"
+              variant="outlined"
+              size="small"
+              type="password"
+              placeholder="●●●●●●●●"
+              onChange={(event) => setConfirmPassword(event.target.value)}
+            />
+            <div>
+              <MyButton variant="contained" type="submit">
+                Créer mon compte
+              </MyButton>
+            </div>
+            <Link to="/login" className="account">
+              Se connecter à votre compte
+            </Link>
+          </form>
+        </div>
       </div>
     </div>
   );

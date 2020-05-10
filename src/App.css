@@ -1,13 +1,32 @@
 /* Common */
-
 body {
   background: #f5f5f5;
   margin: 0 auto;
   overflow-x: hidden;
+  font-family: "Roboto", sans-serif;
+}
+h2 {
+  font-weight: 800;
+  font-size: 30px;
+  color: #4295de;
+  padding: 10px;
+}
+.container {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  border-radius: 10px;
 }
 .input {
-  height: 44px;
-  width: 400px;
+  width: 370px;
+}
+p {
+  font-size: 14px;
+  padding: 2px;
+}
+Link,
+MyButton {
+  cursor: pointer;
 }
 
 /* HEADER */
@@ -15,7 +34,7 @@ header {
   display: flex;
   background: #474e5e;
   height: 100px;
-  font-family: "Roboto", sans-serif;
+  font-family: "Gochi Hand", cursive;
 }
 .element-header {
   display: flex;
@@ -27,7 +46,8 @@ header {
 .name-header {
   color: #ffffff;
   font-weight: bold;
-  font-size: 30px;
+  font-size: 40px;
+  text-decoration: none;
 }
 /* LOADING */
 .container-loader {
@@ -59,16 +79,25 @@ header {
 .name-profile {
   font-weight: bold;
 }
-/* LOGIN */
-.container-login {
-  display: flex;
-  text-align: center;
-  justify-content: center;
+/* SIGNUP */
+.form-signup {
+  width: 500px;
+  height: 100%;
+  margin-top: 50px;
+  background: #ffffff;
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
 }
+.form-to-register {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+/* LOGIN */
 .form {
   width: 500px;
-  height: 400px;
+  height: 100%;
   margin-top: 50px;
   background: #ffffff;
   box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
@@ -79,5 +108,14 @@ header {
   justify-content: center;
 }
 .button-login {
-  margin-top: 20px;
+  padding: 30px 0px 10px 0px;
+}
+.account {
+  display: flex;
+  margin: 20px;
+  font-size: 13px;
+  font-weight: bold;
+  color: #4183d7;
+  text-decoration: none;
+  justify-content: center;
 }

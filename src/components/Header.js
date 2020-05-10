@@ -3,7 +3,7 @@ import "../App.css";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import { styled } from "@material-ui/core/styles";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 const Header = () => {
   const history = useHistory();
@@ -11,9 +11,10 @@ const Header = () => {
   const MyButton = styled(Button)({
     background: "linear-gradient(45deg, #4183d7 30%, #44b0ea 90%)",
     border: 0,
-    borderRadius: 3,
+    borderRadius: 10,
     boxShadow: "0 3px 5px 2px rgba(65, 131, 215, .3)",
     color: "white",
+    width: 170,
     height: 48,
     padding: "0 30px",
   });
@@ -21,7 +22,9 @@ const Header = () => {
   return (
     <header>
       <Grid className="element-header">
-        <div className="name-header">PEOPLE MEETS WORLD</div>
+        <Link to="/" className="name-header">
+          PEOPLE MEETS WORLD
+        </Link>
         <div className="element-button">
           <MyButton
             variant="contained"

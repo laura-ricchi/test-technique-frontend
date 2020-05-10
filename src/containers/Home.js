@@ -4,8 +4,6 @@ import { Helmet } from "react-helmet";
 import "../App.css";
 import Button from "@material-ui/core/Button";
 import Card from "@material-ui/core/Card";
-import CardMedia from "@material-ui/core/CardMedia";
-import CardContent from "@material-ui/core/CardContent";
 import CardActions from "@material-ui/core/CardActions";
 import Grid from "@material-ui/core/Grid";
 import { styled } from "@material-ui/core/styles";
@@ -16,9 +14,14 @@ const Home = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState([]);
 
-  const MyButton = styled(Button)({
-    color: "#BC48D1",
-    height: 44,
+  const ButtonProfile = styled(Button)({
+    background: "linear-gradient(45deg, #4183d7 30%, #44b0ea 90%)",
+    border: 0,
+    borderRadius: 10,
+    boxShadow: "0 3px 5px 2px rgba(65, 131, 215, .3)",
+    color: "white",
+    width: 200,
+    height: 30,
     padding: "0 30px",
   });
 
@@ -26,7 +29,7 @@ const Home = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://randomuser.me/api/?results=10"
+          "https://randomuser.me/api/?results=12"
         );
         console.log(response.data);
         setData(response.data);
@@ -39,7 +42,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div>
+    <Grid>
       <Helmet>
         <title>Tous les profils</title>
       </Helmet>
@@ -47,37 +50,36 @@ const Home = () => {
       {isLoading ? (
         <Loading />
       ) : (
-        <Grid className="container-home">
+        <div className="container-home">
           {data.results.map((user, index) => {
             return (
-              <Grid className="all-cards" key={index}>
+              <Grid key={index}>
                 <Card className="card">
-                  <CardMedia
-                    component="img"
-                    alt={user.name.first}
-                    className="picture-user"
-                    src={user.picture.medium}
-                  />
-                  <CardContent className="card-info-user">
-                    <div>
+                  <div className="picture-card">
+                    <img
+                      alt={user.name.first}
+                      className="picture-user"
+                      src={user.picture.large}
+                    ></img>
+                    <div className="info-user">
                       <div className="name-profile">
                         {user.name.first} {user.name.last}
                       </div>
-                      <div>{user.location.country}</div>
                       <div>{user.dob.age} ans</div>
+                      <div>{user.location.country}</div>
                     </div>
-                  </CardContent>
-                  <CardActions>
-                    <MyButton variant="outlined">Voir son profil</MyButton>
-                    <MyButton variant="outlined">Contacter</MyButton>
+                  </div>
+
+                  <CardActions className="button-profile">
+                    <ButtonProfile>Voir son profil</ButtonProfile>
                   </CardActions>
                 </Card>
               </Grid>
             );
           })}
-        </Grid>
+        </div>
       )}
-    </div>
+    </Grid>
   );
 };
 export default Home;

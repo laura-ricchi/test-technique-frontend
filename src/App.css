@@ -31,7 +31,7 @@ MyButton {
 /* HEADER */
 header {
   display: flex;
-  background: #474e5e;
+  background: #232524;
   height: 100px;
   font-family: "Gochi Hand", cursive;
 }
@@ -59,24 +59,37 @@ header {
 }
 
 /* HOME */
-.all-cards {
-  margin-top: 20px;
+.container-home {
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   justify-content: center;
 }
+
 .card {
-  border-radius: 10px;
+  margin: 40px;
+}
+.picture-card {
   display: flex;
-  flex-direction: column;
-  height: 200px;
-  max-width: 500px;
+  width: 300px;
 }
 .picture-user {
-  height: 180px;
-  object-fit: contain;
+  width: 100px;
+  border-radius: 100px;
+  padding: 20px;
+}
+.info-user {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .name-profile {
   font-weight: bold;
+}
+.button-profile {
+  justify-content: center;
 }
 /* SIGNUP */
 .form-signup {

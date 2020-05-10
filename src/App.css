@@ -8,7 +8,7 @@ body {
 h2 {
   font-weight: 800;
   font-size: 30px;
-  color: #4295de;
+  color: #232524;
   padding: 10px;
 }
 .container {
@@ -26,6 +26,9 @@ p {
 Link,
 MyButton {
   cursor: pointer;
+}
+hr {
+  border-color: #cbcbcc;
 }
 
 /* HEADER */
@@ -67,7 +70,7 @@ header {
 }
 
 .card {
-  margin: 40px;
+  margin: 30px;
 }
 .picture-card {
   display: flex;
@@ -84,10 +87,17 @@ header {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-family: "Gochi Hand", cursive;
 }
 .name-profile {
   font-weight: bold;
+  font-size: 30px;
 }
+.age-user,
+.country-user {
+  font-size: 20px;
+}
+
 .button-profile {
   justify-content: center;
 }
@@ -162,4 +172,23 @@ header {
   display: flex;
   height: 44px;
   width: 300px;
+}
+/* FOOTER */
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: sticky;
+  background: #232524;
+  padding: 20px 0;
+  margin-top: 30px;
+}
+footer div span {
+  color: #fafafa;
+}
+footer a {
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: bold;
+  color: #fafafa;
 }

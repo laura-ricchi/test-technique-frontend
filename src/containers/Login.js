@@ -2,17 +2,17 @@ import React, { useState } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { Helmet } from "react-helmet";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "../App.css";
 import { styled } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
+import ModalForgetPassword from "../components/Modal";
 
-const Login = () => {
+const Login = (props) => {
   // création des états utilisés pour la connexion au compte
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const history = useHistory();
   const token = Cookies.get("token");
 
   const MyButton = styled(Button)({
@@ -80,13 +80,10 @@ const Login = () => {
                 Se connecter
               </MyButton>
             </div>
-            <Link className="account">Mot de passe oublié ?</Link>
-            <Link
-              onClick={() => history.push("/signup")}
-              value="Créer un compte"
-              className="account"
-            >
-              Vous découvrez People Meets People créez un compte !
+            <ModalForgetPassword />
+            <Link to="/signup" className="account">
+              Bienvenue ! Vous découvrez People Meets People ? Créez votre
+              compte !
             </Link>
           </form>
         </div>

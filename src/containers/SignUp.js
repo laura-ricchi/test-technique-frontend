@@ -76,6 +76,7 @@ const SignUp = () => {
               size="small"
               type="text"
               label="Email"
+              autoFocus
               onChange={(event) => setEmail(event.target.value)}
             />
             <p>Votre mot de passe</p>
@@ -84,22 +85,23 @@ const SignUp = () => {
               variant="outlined"
               size="small"
               type="password"
+              autoFocus
               placeholder="●●●●●●●●"
               onChange={(event) => setPassword(event.target.value)}
             />
-
             <p>Confirmez votre mot de passe</p>
             <TextField
               className="input"
               variant="outlined"
               size="small"
               type="password"
+              autoFocus
               placeholder="●●●●●●●●"
               onChange={(event) => setConfirmPassword(event.target.value)}
             />
-            <div>
+            <div className="button-signup">
               <MyButton variant="contained" type="submit">
-                Créer mon compte
+                VALIDER
               </MyButton>
             </div>
             <Link to="/login" className="account">

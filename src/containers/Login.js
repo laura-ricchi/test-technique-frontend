@@ -82,7 +82,7 @@ const Login = (props) => {
             </div>
             <ModalForgetPassword />
             <Link to="/signup" className="account">
-              Vous découvrez People Meets People ? Créez votre compte !
+              Vous découvrez Meet World ? Créez votre compte !
             </Link>
           </form>
         </div>

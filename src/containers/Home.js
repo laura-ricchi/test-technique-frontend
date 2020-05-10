@@ -21,7 +21,7 @@ const Home = () => {
     boxShadow: "0 3px 5px 2px rgba(65, 131, 215, .3)",
     color: "white",
     width: 150,
-    height: 30,
+    height: 35,
     fontSize: 10,
     padding: "0 30px",
   });
@@ -65,6 +65,7 @@ const Home = () => {
                     <div className="info-user">
                       <div className="name-profile">{user.name.first}</div>
                       <div className="age-user">{user.dob.age} ans</div>
+                      <div className="state-user">{user.location.state}</div>
                       <div className="country-user">
                         {user.location.country}
                       </div>

@@ -22,6 +22,7 @@ h2 {
 }
 p {
   font-size: 12px;
+  color: #757575;
 }
 Link,
 MyButton {
@@ -43,7 +44,7 @@ header {
   flex: 1;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
+  padding: 25px;
 }
 .name-header {
   color: #ffffff;
@@ -87,20 +88,22 @@ header {
   justify-content: center;
   align-items: center;
   font-family: "Gochi Hand", cursive;
+  color: #757575;
 }
 .name-profile {
   font-weight: bold;
   font-size: 25px;
 }
 .age-user,
-.country-user {
-  font-size: 20px;
+.country-user .state-user {
+  font-size: 15px;
 }
 
 .button-profile {
   justify-content: center;
 }
 /* SIGNUP */
+
 .form-signup {
   width: 500px;
   height: 100%;
@@ -180,7 +183,7 @@ footer {
   position: sticky;
   background: #232524;
   padding: 20px 0;
-  margin-top: 30px;
+  margin-top: 40px;
 }
 footer div span {
   color: #fafafa;

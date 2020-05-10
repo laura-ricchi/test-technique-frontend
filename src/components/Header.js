@@ -1,9 +1,10 @@
 import React from "react";
 import "../App.css";
-import Grid from "@material-ui/core/Grid";
-import Button from "@material-ui/core/Button";
-import { styled } from "@material-ui/core/styles";
 import { Link, useHistory } from "react-router-dom";
+import Button from "@material-ui/core/Button";
+import Grid from "@material-ui/core/Grid";
+import Icon from "@material-ui/core/Icon";
+import { styled } from "@material-ui/core/styles";
 
 const Header = () => {
   const history = useHistory();
@@ -23,8 +24,9 @@ const Header = () => {
     <header>
       <Grid className="element-header">
         <Link to="/" className="name-header">
-          PEOPLE MEETS WORLD
+          MEET WORLD <Icon>public</Icon>
         </Link>
+
         <div className="element-button">
           <MyButton
             variant="contained"

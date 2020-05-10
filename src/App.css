@@ -68,9 +68,8 @@ header {
   flex-wrap: wrap;
   justify-content: center;
 }
-
 .card {
-  margin: 30px;
+  margin: 25px;
 }
 .picture-card {
   display: flex;
@@ -91,7 +90,7 @@ header {
 }
 .name-profile {
   font-weight: bold;
-  font-size: 30px;
+  font-size: 25px;
 }
 .age-user,
 .country-user {

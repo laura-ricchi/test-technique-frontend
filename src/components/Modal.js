@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Modal from "@material-ui/core/Modal";
 import "../App.css";
-import { Link } from "react-router-dom";
 import Button from "@material-ui/core/Button";
+import { Grid } from "@material-ui/core";
 import { styled } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 
@@ -28,10 +28,10 @@ const ModalForgetPassword = (props) => {
     margin: "25px",
   });
   return (
-    <div>
-      <Link className="account" onClick={handleOpenModal}>
+    <Grid>
+      <i className="account" onClick={handleOpenModal}>
         Mot de passe oublié ?
-      </Link>
+      </i>
       <Modal
         open={open}
         onClose={handleCloseModal}
@@ -64,7 +64,7 @@ const ModalForgetPassword = (props) => {
           </div>
         </div>
       </Modal>
-    </div>
+    </Grid>
   );
 };
 

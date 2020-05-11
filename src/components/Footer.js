@@ -1,9 +1,10 @@
 import React from "react";
+import Grid from "@material-ui/core/Grid";
 
 const Footer = () => {
   return (
     <footer>
-      <div>
+      <Grid>
         <span>
           Test technique réalisé avec
           <a href="https://fr.reactjs.org/"> React </a>
@@ -12,7 +13,7 @@ const Footer = () => {
           <span>par </span>
         </span>
         <a href="https://www.linkedin.com/in/lauraricchi/"> Laura Ricchi </a>
-      </div>
+      </Grid>
     </footer>
   );
 };

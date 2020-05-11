@@ -2,11 +2,12 @@ import React from "react";
 import "../App.css";
 import { Link, useHistory } from "react-router-dom";
 import Button from "@material-ui/core/Button";
+import Cookies from "js-cookie";
 import Grid from "@material-ui/core/Grid";
 import Icon from "@material-ui/core/Icon";
 import { styled } from "@material-ui/core/styles";
 
-const Header = () => {
+const Header = ({ setToken, token, username }) => {
   const history = useHistory();
 
   const MyButton = styled(Button)({
@@ -15,10 +16,12 @@ const Header = () => {
     borderRadius: 10,
     boxShadow: "0 3px 5px 2px rgba(65, 131, 215, .3)",
     color: "white",
-    width: 170,
-    height: 48,
+    width: 120,
+    height: 44,
     padding: "0 30px",
   });
+
+  console.log(token);
 
   return (
     <header>
@@ -26,18 +29,38 @@ const Header = () => {
         <Link to="/" className="name-header">
           MEET WORLD <Icon>public</Icon>
         </Link>
-
-        <div className="element-button">
-          <MyButton
-            variant="contained"
-            className="button-login"
-            onClick={() => {
-              history.push("/login");
-            }}
-          >
-            Se connecter
-          </MyButton>
-        </div>
+        {!token ? (
+          <div className="element-button">
+            <MyButton
+              variant="contained"
+              className="button-login"
+              onClick={() => {
+                history.push("/login");
+              }}
+            >
+              Connexion
+            </MyButton>
+          </div>
+        ) : (
+          <div className="element-button">
+            <MyButton
+              variant="contained"
+              className="button-login"
+              onClick={() => {
+                // mise à jour de la fonction setToken à null
+                setToken(null);
+                // suppression du cookie "token"
+                Cookies.remove("token");
+                // suppression du cookie "username"
+                Cookies.remove("username");
+                // aller sur la page d'accueil "home"
+                history.push("/login");
+              }}
+            >
+              Déconnexion
+            </MyButton>
+          </div>
+        )}
       </Grid>
     </header>
   );

@@ -1,20 +1,23 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Helmet } from "react-helmet";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import "../App.css";
 import Button from "@material-ui/core/Button";
+import { Grid } from "@material-ui/core";
 import { styled } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 
 // page de création d'un nouveau compte
 
-const SignUp = () => {
+const SignUp = ({ onLogin }) => {
   // création des états utilisées pour le formulaire de connexion
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+
+  const history = useHistory();
 
   const MyButton = styled(Button)({
     background: "linear-gradient(45deg, #4183d7 30%, #44b0ea 90%)",
@@ -23,7 +26,7 @@ const SignUp = () => {
     boxShadow: "0 3px 5px 2px rgba(65, 131, 215, .3)",
     color: "white",
     width: 170,
-    height: 48,
+    height: 44,
     padding: "0 30px",
   });
 
@@ -45,18 +48,23 @@ const SignUp = () => {
           }
         );
         console.log(response.data);
+        if (response.data.token) {
+          onLogin(response.data.token, response.data.username);
+
+          history.push("/");
+        }
       }
     } catch (error) {
       console.log(error.message);
     }
   };
   return (
-    <div className="container">
+    <Grid className="container">
       <Helmet>
         <title>S'inscrire</title>
       </Helmet>
-      <div className="form-signup">
-        <div className="form-to-register">
+      <Grid className="form-signup">
+        <Grid className="form-to-register">
           <h2>S'inscrire</h2>
           <form onSubmit={handleSignupSubmit}>
             <p>Votre nom d'utilisateur</p>
@@ -108,9 +116,9 @@ const SignUp = () => {
               Se connecter à votre compte
             </Link>
           </form>
-        </div>
-      </div>
-    </div>
+        </Grid>
+      </Grid>
+    </Grid>
   );
 };
 export default SignUp;

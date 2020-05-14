@@ -17,7 +17,7 @@
   align-items: center;
   justify-content: center;
 }
-@media (max-width: 768px) {
+@media (min-width: 768px) {
   .container-presentation .presentation-meet-world {
     display: flex;
     font-size: 14px;

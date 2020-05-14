@@ -1,5 +1,6 @@
 import React from "react";
-import "../App.css";
+import "../assets/css/Common.css";
+import "../assets/css/Header.css";
 import { Link, useHistory } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import Cookies from "js-cookie";
@@ -20,8 +21,6 @@ const Header = ({ setToken, token, username }) => {
     height: 44,
     padding: "0 30px",
   });
-
-  console.log(token);
 
   return (
     <header>

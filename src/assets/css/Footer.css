@@ -1,0 +1,18 @@
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: sticky;
+  background: #232524;
+  padding: 20px 0;
+  margin-top: 40px;
+}
+footer div span {
+  color: #fafafa;
+}
+footer a {
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: bold;
+  color: #fafafa;
+}

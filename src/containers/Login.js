@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
+import "../assets/css/Common.css";
+import "../assets/css/Login.css";
 import { useHistory } from "react-router-dom";
 import { Helmet } from "react-helmet";
-import "../App.css";
 import ModalForgetPassword from "../components/Modal";
 import Button from "@material-ui/core/Button";
 import { Grid } from "@material-ui/core";
@@ -28,38 +29,40 @@ const Login = ({ onLogin }) => {
   });
 
   const handleLoginSubmit = async (event) => {
-    try {
-      event.preventDefault();
-      const response = await axios.post(
-        "https://my-profile-site-by-lauraricchi.herokuapp.com/login",
-        { email: email, password: password }
-        // {
-        //   headers: {
-        //     Authorization: "Bearer " + token,
-        //     "Content-type": "application/json",
-        //   },
-        // }
-      );
-      // si le token est récupéré lors de la requête sur le backend
-      if (response.data.token) {
-        console.log("response.data =", response.data);
-        // met à jour la variable onLogin
-        onLogin(response.data.token, response.data.account.username);
-        // et aller sur la page d'accueil - Changement de page - avec le token de l'user
-        history.push("/");
-        // sinon afficher un message d'erreur
-      } else {
-        alert("Token is missing");
+    event.preventDefault();
+    if (email && password) {
+      const body = {
+        email: email,
+        password: password,
+      };
+
+      try {
+        const response = await axios.post("http://localhost:3001/login", {
+          email: email,
+          password: password,
+        });
+        // si le token est récupéré lors de la requête sur le backend
+        if (response.data.token) {
+          // met à jour la variable onLogin
+          onLogin(response.data.token);
+          // et aller sur la page d'accueil - Changement de page - avec le token de l'user
+          history.push("/");
+          // sinon afficher un message d'erreur
+        } else {
+          alert("Token is missing");
+        }
+      } catch (error) {
+        console.log(error.message);
       }
-    } catch (error) {
-      console.log(error.message);
+    } else {
+      alert("Veuillez indiquer votre email et mot de passe");
     }
   };
 
   return (
     <Grid className="container">
       <Helmet>
-        <title>Bienvenue sur People Meets World</title>
+        <title>Bienvenue sur Meets World</title>
       </Helmet>
       <Grid className="form">
         <Grid className="form-login">
@@ -93,7 +96,7 @@ const Login = ({ onLogin }) => {
             </div>
             <ModalForgetPassword />
             <Link to="/signup" className="account">
-              Vous découvrez Meet World ? Créez votre compte !
+              Vous découvrez Meets World ? Créez votre compte !
             </Link>
           </form>
         </Grid>

@@ -1,6 +1,7 @@
 import React from "react";
 import Loader from "react-loader-spinner";
-import "../App.css";
+import "../assets/css/Common.css";
+import "../assets/css/Loading.css";
 
 const Loading = () => {
   return (

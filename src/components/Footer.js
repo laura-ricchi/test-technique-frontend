@@ -1,5 +1,7 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid";
+import "../assets/css/Common.css";
+import "../assets/css/Footer.css";
 
 const Footer = () => {
   return (

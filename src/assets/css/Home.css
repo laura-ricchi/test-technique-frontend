@@ -1,0 +1,38 @@
+.container-home {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.card {
+  margin: 25px;
+}
+.picture-card {
+  display: flex;
+  width: 100%;
+}
+.picture-user {
+  border-radius: 100px;
+  padding: 20px;
+}
+.info-user {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "Gochi Hand", cursive;
+  color: #757575;
+}
+.name-profile {
+  font-weight: bold;
+  font-size: 25px;
+}
+.age-user,
+.country-user .state-user {
+  font-size: 15px;
+}
+
+.button-profile {
+  justify-content: center;
+}

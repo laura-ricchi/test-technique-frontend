@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
+import "../assets/css/Common.css";
+import "../assets/css/SignUp.css";
 import { Helmet } from "react-helmet";
 import { Link, useHistory } from "react-router-dom";
-import "../App.css";
 import Button from "@material-ui/core/Button";
 import { Grid } from "@material-ui/core";
 import { styled } from "@material-ui/core/styles";

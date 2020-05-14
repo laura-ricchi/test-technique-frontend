@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import "../assets/css/Common.css";
+import "../assets/css/Home.css";
 import { Helmet } from "react-helmet";
-import "../App.css";
 import Button from "@material-ui/core/Button";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import Grid from "@material-ui/core/Grid";
 import Loading from "../components/Loading";
+import Welcome from "../components/Welcome";
 import { styled } from "@material-ui/core/styles";
 
-const Home = () => {
+const Home = ({ onLogin }) => {
   // création des états pour l'affichage des profils
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState([]);
@@ -30,7 +32,7 @@ const Home = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://randomuser.me/api/?results=12"
+          "https://randomuser.me/api/?page=3&results=12"
         );
         console.log(response.data);
         setData(response.data);
@@ -47,40 +49,47 @@ const Home = () => {
       <Helmet>
         <title>Tous les profils</title>
       </Helmet>
-
       {isLoading ? (
         <Loading />
       ) : (
-        <div className="container-home">
-          {data.results.map((user, index) => {
-            return (
-              <Grid key={index}>
-                <Card className="card">
-                  <div className="picture-card">
-                    <img
-                      alt={user.name.first}
-                      className="picture-user"
-                      src={user.picture.large}
-                    ></img>
-                    <div className="info-user">
-                      <div className="name-profile">{user.name.first}</div>
-                      <div className="age-user">{user.dob.age} ans</div>
-                      <div className="state-user">{user.location.state}</div>
-                      <div className="country-user">
-                        {user.location.country}
+        <Grid>
+          {onLogin ? (
+            <Welcome />
+          ) : (
+            <Grid className="container-home">
+              {data.results.map((user, index) => {
+                return (
+                  <Grid key={index}>
+                    <Card className="card">
+                      <div className="picture-card">
+                        <img
+                          alt={user.name.first}
+                          className="picture-user"
+                          src={user.picture.large}
+                        ></img>
+                        <div className="info-user">
+                          <div className="name-profile">{user.name.first}</div>
+                          <div className="age-user">{user.dob.age} ans</div>
+                          <div className="state-user">
+                            {user.location.state}
+                          </div>
+                          <div className="country-user">
+                            {user.location.country}
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                  </div>
-                  <hr></hr>
-                  <CardActions className="button-profile">
-                    <ButtonProfile>Voir son profil</ButtonProfile>
-                    <ButtonProfile>Contacter</ButtonProfile>
-                  </CardActions>
-                </Card>
-              </Grid>
-            );
-          })}
-        </div>
+                      <hr></hr>
+                      <CardActions className="button-profile">
+                        <ButtonProfile>Voir son profil</ButtonProfile>
+                        <ButtonProfile>Contacter</ButtonProfile>
+                      </CardActions>
+                    </Card>
+                  </Grid>
+                );
+              })}
+            </Grid>
+          )}
+        </Grid>
       )}
     </Grid>
   );

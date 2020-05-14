@@ -8,20 +8,19 @@ import Grid from "@material-ui/core/Grid";
 import Icon from "@material-ui/core/Icon";
 import { styled } from "@material-ui/core/styles";
 
+const MyButton = styled(Button)({
+  background: "linear-gradient(45deg, #4183d7 30%, #44b0ea 90%)",
+  border: 0,
+  borderRadius: 10,
+  boxShadow: "0 3px 5px 2px rgba(65, 131, 215, .3)",
+  color: "white",
+  width: 120,
+  height: 44,
+  padding: "0 30px",
+});
+
 const Header = ({ setToken, token, username }) => {
   const history = useHistory();
-
-  const MyButton = styled(Button)({
-    background: "linear-gradient(45deg, #4183d7 30%, #44b0ea 90%)",
-    border: 0,
-    borderRadius: 10,
-    boxShadow: "0 3px 5px 2px rgba(65, 131, 215, .3)",
-    color: "white",
-    width: 120,
-    height: 44,
-    padding: "0 30px",
-  });
-
   return (
     <header>
       <Grid className="element-header">

@@ -6,23 +6,25 @@
   background-repeat: no-repeat;
   height: 100vh;
 }
-.welcome-meet-people {
+.welcome-meet-world {
   height: 300px;
   width: 500px;
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
   flex: 1;
 }
-
-.title-welcome-meet-people {
+.title-welcome-meet-world,
+.presentation-welcome {
   color: #ffffff;
-  font-family: "Gochi Hand", cursive;
-}
-.title-welcome-meet-people {
   font-size: 40px;
 }
-.presentation-meet-people {
-  font-size: 18px;
+
+@media (max-width: 768px) {
+  .title-welcome-meet-world,
+  .presentation-welcome {
+    font-size: 20px;
+  }
 }

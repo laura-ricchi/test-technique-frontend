@@ -2,13 +2,14 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "../assets/css/Common.css";
 import "../assets/css/Home.css";
+import Loading from "../components/Loading";
+import Presentation from "../components/Presentation";
+import Welcome from "../components/Welcome";
 import { Helmet } from "react-helmet";
 import Button from "@material-ui/core/Button";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import Grid from "@material-ui/core/Grid";
-import Loading from "../components/Loading";
-import Welcome from "../components/Welcome";
 import { styled } from "@material-ui/core/styles";
 
 const Home = ({ onLogin }) => {
@@ -54,7 +55,10 @@ const Home = ({ onLogin }) => {
       ) : (
         <Grid>
           {onLogin ? (
-            <Welcome />
+            <>
+              <Welcome />
+              <Presentation />
+            </>
           ) : (
             <Grid className="container-home">
               {data.results.map((user, index) => {

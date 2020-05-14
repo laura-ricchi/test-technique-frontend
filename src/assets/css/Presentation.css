@@ -1,0 +1,25 @@
+.container-presentation {
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.presentation-meet-world {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+}
+.sentence-presentation {
+  font-family: "Gochi Hand", cursive;
+  font-size: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@media (max-width: 768px) {
+  .container-presentation .presentation-meet-world {
+    display: flex;
+    font-size: 14px;
+  }
+}

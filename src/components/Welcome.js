@@ -1,10 +1,10 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import "../assets/css/Common.css";
 import "../assets/css/Welcome.css";
 import Button from "@material-ui/core/Button";
 import { Grid } from "@material-ui/core";
 import { styled } from "@material-ui/core/styles";
-import Icon from "@material-ui/core/Icon";
 
 const ButtonSignUp = styled(Button)({
   background: "#4183d7",
@@ -14,30 +14,32 @@ const ButtonSignUp = styled(Button)({
   color: "white",
   width: 150,
   height: 44,
-  fontSize: 18,
+  fontSize: 14,
   padding: "0 30px",
 });
 
 const Welcome = () => {
+  const history = useHistory();
+
   return (
     <Grid className="container-welcome">
-      <Grid className="welcome-meet-people">
-        <Grid className="title-welcome-meet-people">
+      <Grid className="welcome-meet-world">
+        <Grid className="title-welcome-meet-world">
           La vie est une aventure...
         </Grid>
 
-        <ButtonSignUp to="/signup">S'inscrire</ButtonSignUp>
+        <Grid className="presentation-welcome">Bienvenue !</Grid>
+
+        <ButtonSignUp
+          onClick={() => {
+            history.push("/signup");
+          }}
+        >
+          S'inscrire
+        </ButtonSignUp>
       </Grid>
     </Grid>
   );
 };
 
 export default Welcome;
-
-{
-  /* <div className="presentation-meet-people">
-Découvrez des nouvelles personnes lors de vos voyages aux quatres
-coins du monde et rejoignez une communauté de globe-trotteurs
-<Icon>public</Icon>
-</div> */
-}

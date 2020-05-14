@@ -96,7 +96,7 @@ const Login = ({ onLogin }) => {
             </div>
             <ModalForgetPassword />
             <Link to="/signup" className="account">
-              Vous découvrez Meets World ? Créez votre compte !
+              Vous découvrez Meet World ? Créez votre compte !
             </Link>
           </form>
         </Grid>

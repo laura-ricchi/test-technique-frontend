@@ -1,6 +1,28 @@
-.container-welome {
-  background: red;
+.container-welcome {
+  display: flex;
+  background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)),
+    url("../img/picture-people.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
 }
-.welome {
-  background-color: #4183d7;
+.welcome-meet-people {
+  height: 300px;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  flex: 1;
+}
+
+.title-welcome-meet-people {
+  color: #ffffff;
+  font-family: "Gochi Hand", cursive;
+}
+.title-welcome-meet-people {
+  font-size: 40px;
+}
+.presentation-meet-people {
+  font-size: 18px;
 }

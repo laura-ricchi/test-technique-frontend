@@ -30,7 +30,7 @@ const App = () => {
       <Header username={username} token={token} setToken={setToken} />
       <Switch>
         <Route exact path="/">
-          <Home />
+          <Home onLogin={onLogin} />
         </Route>
         <Route path="/signup">
           <SignUp onLogin={onLogin} />

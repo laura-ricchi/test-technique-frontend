@@ -4,7 +4,7 @@ import "../assets/css/Welcome.css";
 import Button from "@material-ui/core/Button";
 import { Grid } from "@material-ui/core";
 import { styled } from "@material-ui/core/styles";
-import picture from "../assets/img/picture-people.png";
+import Icon from "@material-ui/core/Icon";
 
 const ButtonSignUp = styled(Button)({
   background: "#4183d7",
@@ -13,23 +13,31 @@ const ButtonSignUp = styled(Button)({
   boxShadow: "0 3px 5px 2px rgba(65, 131, 215, .3)",
   color: "white",
   width: 150,
-  height: 35,
-  fontSize: 12,
+  height: 44,
+  fontSize: 18,
   padding: "0 30px",
 });
 
 const Welcome = () => {
   return (
     <Grid className="container-welcome">
-      <img alt="people" src={picture}></img>
-      <div>Bienvenue sur notre site Meets People</div>
-      <div>
-        Découvrez de nouvelles personnes lors de vos voyages aux quatres coins
-        du monde
-      </div>
-      <ButtonSignUp to="/signup">S'inscrire</ButtonSignUp>
+      <Grid className="welcome-meet-people">
+        <Grid className="title-welcome-meet-people">
+          La vie est une aventure...
+        </Grid>
+
+        <ButtonSignUp to="/signup">S'inscrire</ButtonSignUp>
+      </Grid>
     </Grid>
   );
 };
 
 export default Welcome;
+
+{
+  /* <div className="presentation-meet-people">
+Découvrez des nouvelles personnes lors de vos voyages aux quatres
+coins du monde et rejoignez une communauté de globe-trotteurs
+<Icon>public</Icon>
+</div> */
+}

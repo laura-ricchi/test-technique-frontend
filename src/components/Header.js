@@ -20,7 +20,9 @@ const MyButton = styled(Button)({
 });
 
 const Header = ({ setToken, token, username }) => {
+  console.log("token", token);
   const history = useHistory();
+
   return (
     <header>
       <Grid className="element-header">
@@ -52,7 +54,7 @@ const Header = ({ setToken, token, username }) => {
                 // suppression du cookie "username"
                 Cookies.remove("username");
                 // aller sur la page d'accueil "home"
-                history.push("/login");
+                history.push("/");
               }}
             >
               Déconnexion

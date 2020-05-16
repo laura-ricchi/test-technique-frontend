@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import Cookies from "js-cookie";
+import { Redirect } from "react-router-dom";
 import "../assets/css/Common.css";
 import "../assets/css/Home.css";
-import Loading from "../components/Loading";
-import Presentation from "../components/Presentation";
-import Welcome from "../components/Welcome";
 import { Helmet } from "react-helmet";
+import Loading from "../components/Loading";
 import Button from "@material-ui/core/Button";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
@@ -16,6 +16,8 @@ const Home = ({ onLogin }) => {
   // création des états pour l'affichage des profils
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState([]);
+
+  const token = Cookies.get("token");
 
   const ButtonProfile = styled(Button)({
     background: "linear-gradient(45deg, #4183d7 30%, #44b0ea 90%)",
@@ -33,13 +35,12 @@ const Home = ({ onLogin }) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://randomuser.me/api/?page=3&results=12"
+          "https://randomuser.me/api/?results=12"
         );
-        console.log(response.data);
         setData(response.data);
         setIsLoading(false);
       } catch (error) {
-        console.log("Fetching data failed");
+        alert("Fetching data failed");
       }
     };
     fetchData();
@@ -54,11 +55,8 @@ const Home = ({ onLogin }) => {
         <Loading />
       ) : (
         <Grid>
-          {onLogin ? (
-            <>
-              <Welcome />
-              <Presentation />
-            </>
+          {!onLogin ? (
+            <Redirect to="/" />
           ) : (
             <Grid className="container-home">
               {data.results.map((user, index) => {

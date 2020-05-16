@@ -40,19 +40,16 @@ const SignUp = ({ onLogin }) => {
       } else if (password !== confirmPassword) {
         alert("Vos mots de passe ne sont pas identiques");
       } else {
-        const response = await axios.post(
-          "https://my-profile-site-by-lauraricchi.herokuapp.com/signup",
-          {
-            email: email,
-            username: username,
-            password: password,
-          }
-        );
+        const response = await axios.post("http://localhost:3001/signup", {
+          email: email,
+          username: username,
+          password: password,
+        });
         console.log(response.data);
         if (response.data.token) {
           onLogin(response.data.token, response.data.username);
 
-          history.push("/");
+          history.push("/home");
         }
       }
     } catch (error) {

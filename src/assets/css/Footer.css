@@ -14,7 +14,7 @@ footer a {
   font-weight: bold;
   color: #fafafa;
 }
-@media (min-width: 768px) {
+@media (max-width: 576px) {
   footer {
     font-size: 12px;
     display: flex;

@@ -28,7 +28,6 @@ const Login = ({ loginUser }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const history = useHistory();
-
   // création de la fonction handleLoginSubmit pour le formulaire du login
   const handleLoginSubmit = async (event) => {
     try {
@@ -47,7 +46,7 @@ const Login = ({ loginUser }) => {
             password: password,
           }
         );
-        // si le token est récupéré lors de la requête
+        // si le token est récupéré lors de la requête et la clé
         if (response.data.token && response.data.key) {
           // mise à jour de la variable loginUser
           loginUser(

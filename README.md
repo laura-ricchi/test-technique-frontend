@@ -1,5 +1,3 @@
-# Test technique Front-end
-
 <h1 align="center">
 	Test technique effectué par Laura Ricchi avec Reactjs 💻
     </h1>

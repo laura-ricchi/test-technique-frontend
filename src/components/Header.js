@@ -19,7 +19,7 @@ const MyButton = styled(Button)({
   padding: "0 30px",
 });
 
-const Header = ({ setKey, token, setToken }) => {
+const Header = ({ setKeyTest, token, setToken }) => {
   const history = useHistory();
 
   return (
@@ -47,7 +47,7 @@ const Header = ({ setKey, token, setToken }) => {
               className="button-login"
               onClick={() => {
                 // mise à jour des fonctions setKey et setToken à null
-                setKey(null);
+                setKeyTest(null);
                 setToken(null);
                 // suppression du cookie "key"
                 Cookies.remove("key");

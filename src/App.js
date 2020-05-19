@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import FirstPage from "./containers/FirstPage";
+import Cookies from "js-cookie";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Home from "./containers/Home";
 import Login from "./containers/Login";
 import SignUp from "./containers/SignUp";
-import Cookies from "js-cookie";
+import WelcomeOnMeetPeople from "./containers/WelcomeOnMeetPeople";
 
 const App = () => {
   // création d'état et accéder et lecture de la valeur du cookie "userKey", "userToken" et userEmail
@@ -25,7 +25,7 @@ const App = () => {
       <Header setKeyTest={setKeyTest} token={token} setToken={setToken} />
       <Switch>
         <Route exact path="/">
-          <FirstPage />
+          <WelcomeOnMeetPeople />
         </Route>
         <Route path="/home">
           <Home testKey={keyTest} token={token} email={email} />

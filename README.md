@@ -3,7 +3,7 @@
     </h1>
 
 4 pages sont disponibles:
-**Welcome, SignUp, LogIn et Home**
+**WelcomeOnMeetPeople, SignUp, LogIn et Home**
 
 ## Pour
 

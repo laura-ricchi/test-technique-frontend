@@ -3,7 +3,7 @@ import Grid from "@material-ui/core/Grid";
 import Presentation from "../components/Presentation";
 import Welcome from "../components/Welcome";
 
-const FirstPage = () => {
+const WelcomeOnMeetPeople = () => {
   return (
     <Grid>
       <Welcome />
@@ -12,4 +12,4 @@ const FirstPage = () => {
   );
 };
 
-export default FirstPage;
+export default WelcomeOnMeetPeople;

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Cookies from "js-cookie";
-import { Redirect } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import "../assets/css/Common.css";
 import "../assets/css/Home.css";
 import { Helmet } from "react-helmet";
@@ -12,39 +11,65 @@ import CardActions from "@material-ui/core/CardActions";
 import Grid from "@material-ui/core/Grid";
 import { styled } from "@material-ui/core/styles";
 
-const Home = ({ onLogin }) => {
+const ButtonProfile = styled(Button)({
+  background: "linear-gradient(45deg, #4183d7 30%, #44b0ea 90%)",
+  border: 0,
+  borderRadius: 10,
+  boxShadow: "0 3px 5px 2px rgba(65, 131, 215, .3)",
+  color: "white",
+  width: 150,
+  height: 35,
+  fontSize: 10,
+  padding: "0 30px",
+});
+
+// création de la page Home
+const Home = ({ email, token, testKey }) => {
   // création des états pour l'affichage des profils
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState([]);
+  const history = useHistory();
 
-  const token = Cookies.get("token");
-
-  const ButtonProfile = styled(Button)({
-    background: "linear-gradient(45deg, #4183d7 30%, #44b0ea 90%)",
-    border: 0,
-    borderRadius: 10,
-    boxShadow: "0 3px 5px 2px rgba(65, 131, 215, .3)",
-    color: "white",
-    width: 150,
-    height: 35,
-    fontSize: 10,
-    padding: "0 30px",
-  });
-
+  // création d'un useEffect pour le chargement des données et l'affichage de la route protégée ("/home")
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          "https://randomuser.me/api/?results=12"
+        // route protégée pour l'authorisation de connexion
+        const authenticated = await axios.post(
+          "http://localhost:3001/home",
+          {
+            email: email,
+            key: testKey,
+          },
+          // on récupère en-tête Bearer + token
+          {
+            headers: {
+              Authorization: "Bearer " + token,
+            },
+          }
         );
-        setData(response.data);
-        setIsLoading(false);
+
+        // si l'utilisateur est authentifié alors le statut est "vérifé"
+        if (authenticated.data.message === "Verified") {
+          // récupère les données d'une API
+          const response = await axios.get(
+            "https://randomuser.me/api/?results=12"
+          );
+          // mise à jour de la fonction setData
+          setData(response.data);
+          // le chargement des données a été réalisé => false
+          setIsLoading(false);
+        } else {
+          // sinon redirection sur la page Login
+          history.push("/login");
+        }
+        // sinon erreur (catch)
       } catch (error) {
-        alert("Fetching data failed");
+        console.log(error.message);
       }
     };
     fetchData();
-  }, []);
+  }, [email, history, testKey, token]);
 
   return (
     <Grid>
@@ -54,43 +79,37 @@ const Home = ({ onLogin }) => {
       {isLoading ? (
         <Loading />
       ) : (
-        <Grid>
-          {!onLogin ? (
-            <Redirect to="/" />
-          ) : (
-            <Grid className="container-home">
-              {data.results.map((user, index) => {
-                return (
-                  <Grid key={index}>
-                    <Card className="card">
-                      <div className="picture-card">
-                        <img
-                          alt={user.name.first}
-                          className="picture-user"
-                          src={user.picture.large}
-                        ></img>
-                        <div className="info-user">
-                          <div className="name-profile">{user.name.first}</div>
-                          <div className="age-user">{user.dob.age} ans</div>
-                          <div className="state-user">
-                            {user.location.state}
-                          </div>
-                          <div className="country-user">
-                            {user.location.country}
-                          </div>
-                        </div>
+        // sinon affichage des données de l'API
+        <Grid className="container-home">
+          {data.results.map((user, index) => {
+            console.log("map =>", user);
+            return (
+              <Grid key={index}>
+                <Card className="card">
+                  <div className="picture-card">
+                    <img
+                      alt={user.name.first}
+                      className="picture-user"
+                      src={user.picture.large}
+                    ></img>
+                    <div className="info-user">
+                      <div className="name-profile">{user.name.first}</div>
+                      <div className="age-user">{user.dob.age} ans</div>
+                      <div className="state-user">{user.location.state}</div>
+                      <div className="country-user">
+                        {user.location.country}
                       </div>
-                      <hr></hr>
-                      <CardActions className="button-profile">
-                        <ButtonProfile>Voir son profil</ButtonProfile>
-                        <ButtonProfile>Contacter</ButtonProfile>
-                      </CardActions>
-                    </Card>
-                  </Grid>
-                );
-              })}
-            </Grid>
-          )}
+                    </div>
+                  </div>
+                  <hr></hr>
+                  <CardActions className="button-profile">
+                    <ButtonProfile>Voir son profil</ButtonProfile>
+                    <ButtonProfile>Contacter</ButtonProfile>
+                  </CardActions>
+                </Card>
+              </Grid>
+            );
+          })}
         </Grid>
       )}
     </Grid>

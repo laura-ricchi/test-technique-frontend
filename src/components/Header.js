@@ -19,8 +19,7 @@ const MyButton = styled(Button)({
   padding: "0 30px",
 });
 
-const Header = ({ setToken, token, username }) => {
-  console.log("token", token);
+const Header = ({ setKey, token, setToken }) => {
   const history = useHistory();
 
   return (
@@ -47,13 +46,14 @@ const Header = ({ setToken, token, username }) => {
               variant="contained"
               className="button-login"
               onClick={() => {
-                // mise à jour de la fonction setToken à null
+                // mise à jour des fonctions setKey et setToken à null
+                setKey(null);
                 setToken(null);
+                // suppression du cookie "key"
+                Cookies.remove("key");
                 // suppression du cookie "token"
                 Cookies.remove("token");
-                // suppression du cookie "username"
-                Cookies.remove("username");
-                // aller sur la page d'accueil "home"
+                // aller sur la page d'accueil
                 history.push("/");
               }}
             >

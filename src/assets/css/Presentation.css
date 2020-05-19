@@ -17,9 +17,27 @@
   align-items: center;
   justify-content: center;
 }
-@media (max-width: 576px) {
-  .container-presentation .presentation-meet-world {
+
+@media (max-width: 1024px) {
+  .container-presentation,
+  .presentation-meet-world {
     display: flex;
-    font-size: 14px;
+    font-size: 15px;
+    text-align: -webkit-center;
+  }
+  .sentence-presentation {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container-presentation,
+  .presentation-meet-world {
+    display: flex;
+    font-size: 12px;
+    text-align: -webkit-center;
+  }
+  .sentence-presentation {
+    font-size: 18px;
   }
 }

@@ -9,53 +9,60 @@ import { Grid } from "@material-ui/core";
 import { styled } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 
-// page de création d'un nouveau compte
+const MyButton = styled(Button)({
+  background: "linear-gradient(45deg, #4183d7 30%, #44b0ea 90%)",
+  border: 0,
+  borderRadius: 10,
+  boxShadow: "0 3px 5px 2px rgba(65, 131, 215, .3)",
+  color: "white",
+  width: 170,
+  height: 44,
+  padding: "0 30px",
+});
 
-const SignUp = ({ onLogin }) => {
+// page de création d'un nouveau compte
+const SignUp = ({ loginUser }) => {
   // création des états utilisées pour le formulaire de connexion
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-
   const history = useHistory();
 
-  const MyButton = styled(Button)({
-    background: "linear-gradient(45deg, #4183d7 30%, #44b0ea 90%)",
-    border: 0,
-    borderRadius: 10,
-    boxShadow: "0 3px 5px 2px rgba(65, 131, 215, .3)",
-    color: "white",
-    width: 170,
-    height: 44,
-    padding: "0 30px",
-  });
-
-  // création d'une fonction pour empécher le navigateur de changer de page
   const handleSignupSubmit = async (event) => {
     try {
+      // on empêche le navigateur de changer de page
       event.preventDefault();
+      // si l'username, email mot de passe et confirmation de passe ne sont pas saisis
       if (!username || !email || !password || !confirmPassword) {
         alert("Veuillez remplir tous les champs");
+        // si le mot de passe saisi est différent de la confirmation du mot de passe
       } else if (password !== confirmPassword) {
         alert("Vos mots de passe ne sont pas identiques");
+        // sinon on récupère la réponse du backend en post (SignUp)
       } else {
         const response = await axios.post("http://localhost:3001/signup", {
+          // dans le body on récupère les paramètres email, username, mot de passe
           email: email,
           username: username,
           password: password,
         });
-        console.log(response.data);
-        if (response.data.token) {
-          onLogin(response.data.token, response.data.username);
-
+        console.log("responseWAm ==>", response.data);
+        // si l'utilisateur est authentifié alors il va directement sur la page /home
+        if (response.data.key) {
+          loginUser(
+            response.data.key,
+            response.data.token,
+            response.data.email
+          );
           history.push("/home");
         }
       }
     } catch (error) {
-      console.log(error.message);
+      console.log(error);
     }
   };
+
   return (
     <Grid className="container">
       <Helmet>

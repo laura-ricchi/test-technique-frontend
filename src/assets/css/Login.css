@@ -22,3 +22,8 @@
   text-decoration: none;
   justify-content: center;
 }
+@media (max-width: 576px) {
+  .form {
+    width: 350px;
+  }
+}

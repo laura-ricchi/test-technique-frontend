@@ -11,53 +11,56 @@ import { Link } from "react-router-dom";
 import { styled } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 
-const Login = ({ onLogin }) => {
+const MyButton = styled(Button)({
+  background: "linear-gradient(45deg, #4183d7 30%, #44b0ea 90%)",
+  border: 0,
+  borderRadius: 10,
+  boxShadow: "0 3px 5px 2px rgba(65, 131, 215, .3)",
+  color: "white",
+  width: 170,
+  height: 44,
+  padding: "0 30px",
+});
+
+// création de la page Login
+const Login = ({ loginUser }) => {
   // création des états utilisés pour la connexion au compte
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
   const history = useHistory();
 
-  const MyButton = styled(Button)({
-    background: "linear-gradient(45deg, #4183d7 30%, #44b0ea 90%)",
-    border: 0,
-    borderRadius: 10,
-    boxShadow: "0 3px 5px 2px rgba(65, 131, 215, .3)",
-    color: "white",
-    width: 180,
-    height: 44,
-    padding: "0 30px",
-  });
-
+  // création de la fonction handleLoginSubmit pour le formulaire du login
   const handleLoginSubmit = async (event) => {
-    event.preventDefault();
-    if (email && password) {
-      const body = {
-        email,
-        password,
-      };
-
-      try {
+    try {
+      // empêcher le navigateur de changer la page
+      event.preventDefault();
+      // si le mot de passe et mail ne sont pas saisis
+      if (!email || !password) {
+        alert("Veuillez remplir tous les champs");
+      } else {
+        // alors on récupère la réponse du backend en post (login)
         const response = await axios.post(
           "http://localhost:3001/login",
-          email,
-          password
+          // dans le body on récupère l'email le mot de passe et la clé
+          {
+            email: email,
+            password: password,
+          }
         );
-        // si le token est récupéré lors de la requête sur le backend
-        if (response.data.token) {
-          // met à jour la variable onLogin
-          onLogin(response.data.token, response.data.username);
-          // et aller sur la page home - Changement de page - avec le token de l'user
+        // si le token est récupéré lors de la requête
+        if (response.data.token && response.data.key) {
+          // mise à jour de la variable loginUser
+          loginUser(
+            response.data.key,
+            response.data.token,
+            response.data.email
+          );
+          // aller sur la page avec les profils
           history.push("/home");
-          // sinon afficher un message d'erreur
-        } else {
-          alert("Token is missing");
         }
-      } catch (error) {
-        console.log(error.message);
       }
-    } else {
-      alert("Veuillez indiquer votre email et mot de passe");
+    } catch (error) {
+      console.log(error.message);
     }
   };
 
@@ -65,7 +68,7 @@ const Login = ({ onLogin }) => {
     <>
       <Grid className="container">
         <Helmet>
-          <title>Bienvenue sur Meets World</title>
+          <title>Bienvenue sur Meet World</title>
         </Helmet>
         <Grid className="form">
           <Grid className="form-login">
@@ -93,13 +96,7 @@ const Login = ({ onLogin }) => {
                 onChange={(event) => setPassword(event.target.value)}
               />
               <div className="button-login">
-                <MyButton
-                  variant="contained"
-                  type="button"
-                  onClick={() => {
-                    history.push("/home");
-                  }}
-                >
+                <MyButton variant="contained" type="submit">
                   Se connecter
                 </MyButton>
               </div>

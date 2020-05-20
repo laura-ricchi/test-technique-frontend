@@ -34,12 +34,11 @@ const SignUp = ({ loginUser }) => {
       // on empêche le navigateur de changer de page
       event.preventDefault();
       // si l'username, email mot de passe et confirmation de passe ne sont pas saisis
+
       if (!username || !email || !password || !confirmPassword) {
         alert("Veuillez remplir tous les champs");
-        // si le mot de passe saisi est différent de la confirmation du mot de passe
       } else if (password !== confirmPassword) {
         alert("Vos mots de passe ne sont pas identiques");
-        // sinon on récupère la réponse du backend en post (SignUp)
       } else {
         const response = await axios.post("http://localhost:3001/signup", {
           // dans le body on récupère les paramètres email, username, mot de passe
@@ -47,7 +46,6 @@ const SignUp = ({ loginUser }) => {
           username: username,
           password: password,
         });
-        console.log("responseWAm ==>", response.data);
         // si l'utilisateur est authentifié alors il va directement sur la page /home
         if (response.data.key) {
           loginUser(
@@ -118,7 +116,7 @@ const SignUp = ({ loginUser }) => {
               </MyButton>
             </div>
             <Link to="/login" className="account">
-              Se connecter à votre compte
+              Vous avez déjà un compte ? Se connecter !
             </Link>
           </form>
         </Grid>

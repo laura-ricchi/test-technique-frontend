@@ -82,7 +82,6 @@ const Home = ({ email, token, testKey }) => {
         // sinon affichage des données de l'API
         <Grid className="container-home">
           {data.results.map((user, index) => {
-            console.log("map =>", user);
             return (
               <Grid key={index}>
                 <Card className="card">

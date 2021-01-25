@@ -1,23 +1,12 @@
 import React from "react";
+import { Link, useHistory } from "react-router-dom";
 import "../assets/css/Common.css";
 import "../assets/css/Header.css";
-import { Link, useHistory } from "react-router-dom";
-import Button from "@material-ui/core/Button";
+import {Button, Grid }from "@material-ui/core";
+import {BiWorld} from "react-icons/bi";
 import Cookies from "js-cookie";
-import Grid from "@material-ui/core/Grid";
-import Icon from "@material-ui/core/Icon";
-import { styled } from "@material-ui/core/styles";
-
-const MyButton = styled(Button)({
-  background: "linear-gradient(45deg, #4183d7 30%, #44b0ea 90%)",
-  border: 0,
-  borderRadius: 10,
-  boxShadow: "0 3px 5px 2px rgba(65, 131, 215, .3)",
-  color: "white",
-  width: 120,
-  height: 44,
-  padding: "0 30px",
-});
+import LoginButton from "../components/LoginButton";
+import User from "../components/User"
 
 const Header = ({ setKeyTest, token, setToken }) => {
   const history = useHistory();
@@ -25,24 +14,21 @@ const Header = ({ setKeyTest, token, setToken }) => {
   return (
     <header>
       <Grid className="element-header">
-        <Link to="/" className="name-header">
-          MEET WORLD <Icon>public</Icon>
-        </Link>
+        <div className="title-header">
+          <Link to="/" className="name-header">
+          MEET WORLD  </Link>
+          <BiWorld className="icon-public-header"/>
+       
+        </div>
+        
         {!token ? (
           <div className="element-button">
-            <MyButton
-              variant="contained"
-              className="button-login"
-              onClick={() => {
-                history.push("/login");
-              }}
-            >
-              Connexion
-            </MyButton>
+          <LoginButton/>
+          <User/>
           </div>
         ) : (
           <div className="element-button">
-            <MyButton
+            <Button
               variant="contained"
               className="button-login"
               onClick={() => {
@@ -58,7 +44,7 @@ const Header = ({ setKeyTest, token, setToken }) => {
               }}
             >
               Déconnexion
-            </MyButton>
+            </Button>
           </div>
         )}
       </Grid>

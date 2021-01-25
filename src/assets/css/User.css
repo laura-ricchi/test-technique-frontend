@@ -1,0 +1,27 @@
+.container-user {
+  margin-left: 1rem;
+}
+.icon-user {
+  color: #fff;
+  cursor: pointer;
+  font-size: 2rem;
+}
+
+/* Medium devices (tablets, 768px and up) -- min width*/
+@media (min-width: 768px) {
+  .container-user {
+    display: none;
+  }
+}
+/* Medium devices (tablets, 768px and up) -- max width */
+@media (max-width: 768px) {
+  .icon-user {
+    font-size: 1.75rem;
+  }
+}
+/* Small devices (landscape phones, 576px and up) */
+@media (max-width: 576px) {
+  .icon-user {
+    font-size: 1.5rem;
+  }
+}

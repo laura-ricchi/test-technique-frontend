@@ -1,17 +1,17 @@
 <h1 align="center">
-	Test technique effectué par Laura Ricchi avec Reactjs 💻
+	Site réalisé par Laura Ricchi avec Reactjs 💻
     </h1>
 
 4 pages sont disponibles:
 **WelcomeOnMeetPeople, SignUp, LogIn et Home**
 
-## Pour
+## Pour ->
 
 - Cloner ce dépôt :
 
 ```
 Git Clone => https://github.com/laura-ricchi/test-technique-frontend
-and  => cd test-technique-Laura-Ricchi
+and  => cd meetpeople-Laura-Ricchi
 ```
 
 - Installer le package :

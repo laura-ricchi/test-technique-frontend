@@ -1,14 +1,9 @@
 .container-presentation {
-  height: 300px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
+  height: 40rem;
+  background-color: lawngreen;
 }
 .presentation-meet-world {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 15px;
+  background-color: lightcoral;
 }
 .sentence-presentation {
   font-family: "Gochi Hand", cursive;

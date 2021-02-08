@@ -10,7 +10,7 @@
 - Cloner ce dépôt :
 
 ```
-Git Clone => https://github.com/laura-ricchi/test-technique-frontend
+Git Clone => https://github.com/laura-ricchi/MeetWorld-frontend
 and  => cd meetpeople-Laura-Ricchi
 ```
 

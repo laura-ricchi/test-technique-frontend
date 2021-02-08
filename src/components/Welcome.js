@@ -8,9 +8,9 @@ const Welcome = () => {
     <Grid className="container-welcome">
       <Grid className="welcome-meet-world">
         <Grid className="title-welcome-meet-world">
-          La vie est une aventure...
+        Life is an adventure 
         </Grid>
-        <Grid className="presentation-welcome">Bienvenue !</Grid>
+        <Grid className="presentation-welcome">Welcome to Meet World !</Grid>
      
       </Grid>
     </Grid>

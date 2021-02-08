@@ -1,38 +1,36 @@
 .container-presentation {
-  height: 40rem;
-  background-color: lawngreen;
+  height: 100%;
 }
-.presentation-meet-world {
-  background-color: lightcoral;
+.presentation-meetWorld {
+  width: 100%;
 }
-.sentence-presentation {
-  font-family: "Gochi Hand", cursive;
-  font-size: 32px;
+.firstBlock-presentation,
+.secondBlock-presentation,
+.thirdBlock-presentation {
+  display: flex;
+  height: 20rem;
+  padding: 5rem;
+}
+.text-presentation {
+  width: 50%;
   display: flex;
   align-items: center;
+  text-align: center;
+}
+.text-presentation > p {
+  flex: 1;
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+
+.picture-presentation {
+  width: 50%;
+  display: flex;
   justify-content: center;
 }
-
-@media (max-width: 1024px) {
-  .container-presentation,
-  .presentation-meet-world {
-    display: flex;
-    font-size: 15px;
-    text-align: -webkit-center;
-  }
-  .sentence-presentation {
-    font-size: 22px;
-  }
-}
-
-@media (max-width: 768px) {
-  .container-presentation,
-  .presentation-meet-world {
-    display: flex;
-    font-size: 12px;
-    text-align: -webkit-center;
-  }
-  .sentence-presentation {
-    font-size: 18px;
-  }
+.happy-people-picture,
+.travel-people-picture {
+  border-radius: 1rem;
+  width: 80%;
+  object-fit: cover;
 }

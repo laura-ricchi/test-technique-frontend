@@ -1,19 +1,59 @@
 import React from "react";
 import "../assets/css/Common.css";
 import "../assets/css/Presentation.css";
-import { Container, Grid } from "@material-ui/core";
+import { Container } from "@material-ui/core";
+import HappyPeople from "../assets/img/happy-people.png";
+import HappyPeople2 from "../assets/img/happy-people2.jpg";
+import Travel from "../assets/img/travel.jpg"
 
 const Presentation = () => {
   return (
     <Container fluid className="container-presentation">
-   
-      <Grid className="presentation-meet-world">
-        Découvrez des nouvelles personnes lors de vos voyages aux quatres coins
-        du monde et rejoignez une communauté de globe-trotteurs ...
-      </Grid>
-      <Grid className="sentence-presentation">
-        À vos marques, prêts, voyagez !
-      </Grid>
+      <div className="presentation-meetWorld">
+        <div className="firstBlock-presentation">
+          <div className="text-presentation">
+            <p>
+              Discover new people as you travel all over the place of the world
+              and join a community of globetrotters.
+            </p>
+          </div>
+          <div className="picture-presentation">
+            <img
+              src={HappyPeople}
+              alt="happy-people"
+              className="happy-people-picture"
+            />
+          </div>
+        </div>
+        <div className="secondBlock-presentation">
+          <div className="picture-presentation">
+            <img
+              src={Travel}
+              alt="happy-people"
+              className="travel-people-picture"
+            />
+          </div>
+          <div className="text-presentation">
+            <p>Ready... </p>
+          </div>
+        </div>
+        <div className="thirdBlock-presentation">
+
+          <div className="text-presentation">
+            <p>
+             GO !!!!
+            </p>
+          </div>
+          <div className="picture-presentation">
+            <img
+              src={HappyPeople2}
+              alt="happy-people"
+              className="happy-people-picture"
+            />
+          </div>
+        </div>
+
+      </div>
     </Container>
   );
 };

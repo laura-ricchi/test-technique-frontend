@@ -1,17 +1,19 @@
 import React from "react";
 import "../assets/css/Common.css";
 import "../assets/css/Presentation.css";
-import { Container } from "@material-ui/core";
+import { Button } from "@material-ui/core";
+import { Link } from "react-router-dom";
 import HappyPeople from "../assets/img/happy-people.png";
 import HappyPeople2 from "../assets/img/happy-people2.jpg";
-import Travel from "../assets/img/travel.jpg"
+import Travel from "../assets/img/travel.jpg";
 
 const Presentation = () => {
   return (
-    <Container fluid className="container-presentation">
+    <div fluid className="container-presentation">
       <div className="presentation-meetWorld">
         <div className="firstBlock-presentation">
           <div className="text-presentation">
+            <h2>New Social Media</h2>
             <p>
               Discover new people as you travel all over the place of the world
               and join a community of globetrotters.
@@ -34,15 +36,22 @@ const Presentation = () => {
             />
           </div>
           <div className="text-presentation">
-            <p>Ready... </p>
+            <h2>Do you want to meet people ?</h2>
+            <p>Millions of users are waiting for you !</p>
           </div>
         </div>
         <div className="thirdBlock-presentation">
-
           <div className="text-presentation">
-            <p>
-             GO !!!!
-            </p>
+            <h2>Are you ready ? </h2>
+            <p>Don't waist time and register you!</p>
+              <Button className="signup-button">
+                <Link
+                  to="/signup"
+                  style={{ textDecoration: "none", color: "#fff", backgroundColor:"#b937d3" }}
+                >
+                  SignUp
+                </Link>
+              </Button>
           </div>
           <div className="picture-presentation">
             <img
@@ -52,9 +61,8 @@ const Presentation = () => {
             />
           </div>
         </div>
-
       </div>
-    </Container>
+    </div>
   );
 };
 

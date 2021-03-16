@@ -1,1 +1,18 @@
+body {
+  color: #333;
+}
 
+.button {
+  background-color: #fff;
+  color: #fff;
+  border-radius: 0.25rem;
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (max-width: 768px) {
+  Button {
+    display: none;
+  }
+}
+
+/*# sourceMappingURL=App.css.map */

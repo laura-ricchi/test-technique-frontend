@@ -7,13 +7,13 @@ const Footer = () => {
     <footer>
       <div>
         <span>
-          Site réalisé avec
+          Website made with
           <a href="https://fr.reactjs.org/"> React </a>
-          <span>et </span>
+          <span>and </span>
           <a href="https://material-ui.com/">Material-UI </a>
-          <span>par </span>
+          <span>by </span>
           <a href="https://www.linkedin.com/in/lauraricchi/"> Laura Ricchi </a>
-          <span> - Développeuse Web  </span>
+          <span> - Web Developer  </span>
 
         </span>
       </div>

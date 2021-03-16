@@ -1,20 +1,18 @@
 import React from "react";
 import { Button } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
-import "../assets/css/LoginButton.css";
 
 const LoginButton = () => {
   const history = useHistory();
   return (
-    <div className="loginButton">
+    <div>
       <Button
-        className="button-login"
-        style={{color: "#fff"}}
+      className="button"
         onClick={() => {
           history.push("/login");
         }}
       >
-        Connexion
+        Login
       </Button>
     </div>
   );

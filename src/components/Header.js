@@ -1,11 +1,11 @@
 import React from "react";
 import { Link, useHistory } from "react-router-dom";
+import Cookies from "js-cookie";
+import { Button, Grid } from "@material-ui/core";
+import { BiWorld } from "react-icons/bi";
+import LoginButton from "../components/LoginButton";
 import "../assets/css/Common.css";
 import "../assets/css/Header.css";
-import {Button, Grid }from "@material-ui/core";
-import {BiWorld} from "react-icons/bi";
-import Cookies from "js-cookie";
-import LoginButton from "../components/LoginButton";
 import User from "../components/User"
 
 const Header = ({ setKeyTest, token, setToken }) => {
@@ -18,9 +18,7 @@ const Header = ({ setKeyTest, token, setToken }) => {
           <Link to="/" className="name-header">
           MEET WORLD  </Link>
           <BiWorld className="icon-public-header"/>
-       
         </div>
-        
         {!token ? (
           <div className="element-button">
           <LoginButton/>
@@ -30,7 +28,6 @@ const Header = ({ setKeyTest, token, setToken }) => {
           <div className="element-button">
             <Button
               variant="contained"
-              className="button-login"
               onClick={() => {
                 // mise à jour des fonctions setKey et setToken à null
                 setKeyTest(null);
@@ -43,7 +40,7 @@ const Header = ({ setKeyTest, token, setToken }) => {
                 history.push("/");
               }}
             >
-              Déconnexion
+              SignOut
             </Button>
           </div>
         )}

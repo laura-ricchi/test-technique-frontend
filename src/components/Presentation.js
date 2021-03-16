@@ -1,8 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "../assets/css/Common.css";
 import "../assets/css/Presentation.css";
 import { Button } from "@material-ui/core";
-import { Link } from "react-router-dom";
 import HappyPeople from "../assets/img/happy-people.png";
 import HappyPeople2 from "../assets/img/happy-people2.jpg";
 import Travel from "../assets/img/travel.jpg";
@@ -44,10 +44,10 @@ const Presentation = () => {
           <div className="text-presentation">
             <h2>Are you ready ? </h2>
             <p>Don't waist time and register you!</p>
-              <Button className="signup-button">
+              <Button className="button">
                 <Link
                   to="/signup"
-                  style={{ textDecoration: "none", color: "#fff", backgroundColor:"#b937d3" }}
+                  style={{ textDecoration: "none"}}
                 >
                   SignUp
                 </Link>

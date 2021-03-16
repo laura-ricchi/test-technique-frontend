@@ -11,9 +11,6 @@
   justify-content: center;
   flex-direction: column;
 }
-.button-signup {
-  padding: 30px 0px 10px 0px;
-}
 @media (max-width: 576px) {
   .form-signup {
     width: 350px;

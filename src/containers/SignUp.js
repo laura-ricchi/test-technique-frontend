@@ -4,21 +4,8 @@ import "../assets/css/Common.css";
 import "../assets/css/SignUp.css";
 import { Helmet } from "react-helmet";
 import { Link, useHistory } from "react-router-dom";
-import Button from "@material-ui/core/Button";
-import { Grid } from "@material-ui/core";
-import { styled } from "@material-ui/core/styles";
+import { Button, Grid } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
-
-const MyButton = styled(Button)({
-  background: "linear-gradient(45deg, #4183d7 30%, #44b0ea 90%)",
-  border: 0,
-  borderRadius: 10,
-  boxShadow: "0 3px 5px 2px rgba(65, 131, 215, .3)",
-  color: "white",
-  width: 170,
-  height: 44,
-  padding: "0 30px",
-});
 
 // page de création d'un nouveau compte
 const SignUp = ({ loginUser }) => {
@@ -110,10 +97,10 @@ const SignUp = ({ loginUser }) => {
               placeholder="●●●●●●●●"
               onChange={(event) => setConfirmPassword(event.target.value)}
             />
-            <div className="button-signup">
-              <MyButton variant="contained" type="submit">
+            <div>
+              <Button className="button" variant="contained" type="submit">
                 VALIDER
-              </MyButton>
+              </Button>
             </div>
             <Link to="/login" className="account">
               Vous avez déjà un compte ? Se connecter !

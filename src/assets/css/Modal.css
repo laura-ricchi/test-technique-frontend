@@ -3,17 +3,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100vw;
-  height: 100vh;
   position: fixed;
   top: 0;
+
   background-color: rgba(0, 0, 0, 0.7);
-}
-.modal-login {
-  background-color: #ffffff;
-  display: flex;
-  justify-content: center;
-  border-radius: 20px;
 }
 .modal-forget-password {
   width: 500px;

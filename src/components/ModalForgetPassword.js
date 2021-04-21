@@ -1,11 +1,8 @@
 import React, { useState } from "react";
 import "../assets/css/Common.css";
 import "../assets/css/Modal.css";
-import Modal from "@material-ui/core/Modal";
-import Button from "@material-ui/core/Button";
-import { Grid } from "@material-ui/core";
-import { styled } from "@material-ui/core/styles";
-import TextField from "@material-ui/core/TextField";
+import { Button, Container, Grid, Modal, TextField
+} from "@material-ui/core";
 
 // création d'une modal pour l'oubli du mot de passe (dans la page Login)
 const ModalForgetPassword = (props) => {
@@ -17,22 +14,11 @@ const ModalForgetPassword = (props) => {
   const handleCloseModal = () => {
     setOpen(false);
   };
-
-  const ButtonModal = styled(Button)({
-    background: "linear-gradient(45deg, #4183d7 30%, #44b0ea 90%)",
-    border: 0,
-    borderRadius: 10,
-    boxShadow: "0 3px 5px 2px rgba(65, 131, 215, .3)",
-    color: "white",
-    width: 150,
-    height: 44,
-    margin: "25px",
-  });
   return (
-    <Grid>
-      <i className="account" onClick={handleOpenModal}>
+    <Container style={{backgroundColor:"red"}}>
+      <p style={{cursor:"pointer"}} onClick={handleOpenModal}>
         Mot de passe oublié ?
-      </i>
+      </p>
       <Modal
         open={open}
         onClose={handleCloseModal}
@@ -40,14 +26,13 @@ const ModalForgetPassword = (props) => {
         aria-describedby="simple-modal-description"
       >
         <div className="modal">
-          <div className="modal-login">
             <div className="modal-forget-password">
-              <h3>Réinitialiser votre mot de passe.</h3>
+              <h3>Reset your password.</h3>
               <p>
-                Pour réinitialiser votre mot de passe, nous devons vous envoyer
-                un e-mail.
+              To reset your password we have to send you
+                an email.
               </p>
-              <p>Votre adresse mail</p>
+              <p>Your email: </p>
               <div>
                 <TextField
                   variant="outlined"
@@ -57,15 +42,17 @@ const ModalForgetPassword = (props) => {
                 />
               </div>
               <div>
-                <ButtonModal variant="contained" type="submit">
-                  Valider
-                </ButtonModal>
+                <Button    onClick={() => {
+         alert("Request sent ")
+        }} variant="contained" type="submit" className="button">
+                  Ok
+                </Button>
               </div>
             </div>
-          </div>
+
         </div>
       </Modal>
-    </Grid>
+    </Container>
   );
 };
 

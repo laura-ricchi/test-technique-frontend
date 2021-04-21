@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import "../assets/css/Common.css";
 import "../assets/css/Presentation.css";
 import { Button } from "@material-ui/core";
@@ -8,8 +8,10 @@ import HappyPeople2 from "../assets/img/happy-people2.jpg";
 import Travel from "../assets/img/travel.jpg";
 
 const Presentation = () => {
+  const history = useHistory();
+
   return (
-    <div fluid className="container-presentation">
+    <div className="container-presentation">
       <div className="presentation-meetWorld">
         <div className="firstBlock-presentation">
           <div className="text-presentation">
@@ -44,13 +46,10 @@ const Presentation = () => {
           <div className="text-presentation">
             <h2>Are you ready ? </h2>
             <p>Don't waist time and register you!</p>
-              <Button className="button">
-                <Link
-                  to="/signup"
-                  style={{ textDecoration: "none"}}
-                >
-                  SignUp
-                </Link>
+              <Button       className="button" onClick={() => {
+          history.push("/signup");
+        }}>
+               SignUp
               </Button>
           </div>
           <div className="picture-presentation">

@@ -1,11 +1,26 @@
-// variables 
+// variables
 // body
 $primary-color: #333;
-$primary-colorBody : #fafafa;
+$primary-colorBody: #fafafa;
+// form
+$form-backgroundColor: #fff;
+$form-boxShadow: 0rem 3rem 3rem rgba(0, 0, 0, 0.1);
+$form-borderRadius: 1rem;
 // button
 $button-backgroundColor: #b937d3;
-$button-color:#fff;
-$button-borderRadius:0.25rem;
+$button-color: #fff;
+$button-fontSize: 2rem;
+$button-borderRadius: 0.25rem;
+$button-height: 3rem;
+$button-width: 6rem;
+// input
+$input-width: 20rem;
+$input-color: #b937d3;
+
+// p
+$paragraph-colorText: #b937d3;
+$paragraph-textAlign: center;
+$paragraph-fontSize: 1rem;
 
 body {
   color: $primary-color;
@@ -21,11 +36,33 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+// @mixin bodyTransform($property) {
+//   -moz-box-sizing: border-box;
+//   -webkit-font-smoothing: antialiased;
+//   -moz-osx-font-smoothing: grayscale;
+// }
 
 .button {
   background-color: $button-backgroundColor !important;
   color: $button-color !important;
+  font-size: $button-fontSize;
   border-radius: $button-borderRadius;
+  height: $button-height;
+  width: $button-width;
+}
+.input {
+  width: $input-width;
+  color: $input-color;
+}
+.form {
+  background-color: $form-backgroundColor;
+  box-shadow: $form-boxShadow;
+  border-radius: $form-borderRadius;
+}
+p {
+  color: $paragraph-colorText;
+  text-align: $paragraph-textAlign;
+  font-size: $paragraph-fontSize;
 }
 
 /* Medium devices (tablets, 768px and up) */

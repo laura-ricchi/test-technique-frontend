@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Link, useHistory } from "react-router-dom";
-import { Button, Grid, TextField } from "@material-ui/core";
+import { Button, Container, Grid, TextField } from "@material-ui/core";
 import { Helmet } from "react-helmet";
-import ModalForgetPassword from "../components/Modal";
-import "../assets/css/Common.css";
+import ModalForgetPassword from "../components/ModalForgetPassword";
 import "../assets/css/Login.css";
 
 // création de la page Login
@@ -13,6 +12,7 @@ const Login = ({ loginUser }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const history = useHistory();
+  
   // création de la fonction handleLoginSubmit pour le formulaire du login
   const handleLoginSubmit = async (event) => {
     try {
@@ -49,50 +49,61 @@ const Login = ({ loginUser }) => {
   };
 
   return (
-    <>
-      <Grid className="container">
-        <Helmet>
-          <title>Bienvenue sur Meet World</title>
-        </Helmet>
+    <Container fluid className="form-container">
+      <Helmet>
+        <title>Bienvenue sur Meet World</title>
+      </Helmet>
+      <Grid className="form-grid">
         <Grid className="form">
-          <Grid className="form-login">
-            <form onSubmit={handleLoginSubmit}>
-              <h2>Connexion à votre compte</h2>
-              <p>Votre email</p>
+          <form
+            onSubmit={handleLoginSubmit}
+            className="form-login"
+          >
+            <h2>Connexion à votre compte</h2>
+            <p>Your email</p>
+            <div className="form-textField">
               <TextField
                 className="input"
-                type="text"
+                type="email"
+                placeholder="youremail@email.com"
                 variant="outlined"
-                label="Email"
                 size="small"
                 autoFocus
                 onChange={(event) => setEmail(event.target.value)}
               />
-              <p>Votre mot de passe</p>
+            </div>
+
+            <p>Your password</p>
+            <div className="form-textField">
               <TextField
                 className="input"
                 variant="outlined"
                 type="password"
-                label="Mot de passe"
-                placeholder="●●●●●●●●"
+                placeholder="●●●●●●●●●●●"
                 size="small"
                 autoFocus
                 onChange={(event) => setPassword(event.target.value)}
               />
-              <div>
-                <Button variant="contained" type="submit">
-                  Se connecter
+            </div>
+            <div className="button-text">
+              <div className="button-submit">
+                <Button variant="contained" type="submit" className="button">
+                  Login
                 </Button>
               </div>
-              <ModalForgetPassword />
-              <Link to="/signup" className="account">
-                Vous découvrez Meet World ? Créez votre compte !
-              </Link>
-            </form>
-          </Grid>
+              <div className="modal-login">
+                <ModalForgetPassword />
+              </div>
+              <div>
+                <Link to="/signup" style={{textDecoration: "none"}}>
+                  <p>You discover Meet World ? Create your account !</p>
+                </Link>
+              </div>
+            </div>
+          </form>
         </Grid>
       </Grid>
-    </>
+    </Container>
   );
 };
 export default Login;

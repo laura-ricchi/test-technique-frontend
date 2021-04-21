@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useHistory } from "react-router-dom";
 import Cookies from "js-cookie";
-import { Button, Grid } from "@material-ui/core";
+import { Button} from "@material-ui/core";
 import { BiWorld } from "react-icons/bi";
 import LoginButton from "../components/LoginButton";
 import "../assets/css/Common.css";
@@ -13,7 +13,7 @@ const Header = ({ setKeyTest, token, setToken }) => {
 
   return (
     <header>
-      <Grid className="element-header">
+      <div className="element-header">
         <div className="title-header">
           <Link to="/" className="name-header">
           MEET WORLD  </Link>
@@ -44,7 +44,7 @@ const Header = ({ setKeyTest, token, setToken }) => {
             </Button>
           </div>
         )}
-      </Grid>
+      </div>
     </header>
   );
 };

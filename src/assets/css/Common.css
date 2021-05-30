@@ -27,3 +27,9 @@ h2 {
 hr {
   border-color: #cbcbcc;
 }
+.form-container {
+  height: 50rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -4,7 +4,7 @@ import "../assets/css/Common.css";
 import "../assets/css/SignUp.css";
 import { Helmet } from "react-helmet";
 import { Link, useHistory } from "react-router-dom";
-import { Button, Grid } from "@material-ui/core";
+import { Button, Container, Grid } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 
 // page de création d'un nouveau compte
@@ -49,7 +49,7 @@ const SignUp = ({ loginUser }) => {
   };
 
   return (
-    <Grid className="container">
+    <Container fluid className="form-container" style={{display: "flex"}}>
       <Helmet>
         <title>S'inscrire</title>
       </Helmet>
@@ -63,7 +63,7 @@ const SignUp = ({ loginUser }) => {
               variant="outlined"
               type="text"
               size="small"
-              label="Nom d'utilisateur "
+              label="Nom d'utilisateur"
               autoFocus
               onChange={(event) => setUsername(event.target.value)}
             />
@@ -97,18 +97,20 @@ const SignUp = ({ loginUser }) => {
               placeholder="●●●●●●●●"
               onChange={(event) => setConfirmPassword(event.target.value)}
             />
-            <div>
-              <Button className="button" variant="contained" type="submit">
+            <div className="button-text">
+            <div className="button-submit">
+                    <Button className="button" variant="contained" type="submit">
                 VALIDER
-              </Button>
-            </div>
+              </Button></div>
+          </div>
+            
             <Link to="/login" className="account">
               Vous avez déjà un compte ? Se connecter !
             </Link>
           </form>
         </Grid>
       </Grid>
-    </Grid>
+    </Container>
   );
 };
 export default SignUp;
